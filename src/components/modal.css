@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Frin CSS — Modal
+   Structure: .frin-modal (backdrop) > .frin-modal__dialog
+              .frin-modal__header|body|footer  .frin-modal__close
+   Toggle visibility with .is-open (or [hidden]).
+   ========================================================================== */
+
+.frin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--frin-z-modal-backdrop);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--frin-space-4);
+  background-color: rgba(11, 31, 58, 0.5);
+}
+.frin-modal.is-open { display: flex; }
+
+.frin-modal__dialog {
+  width: 100%;
+  max-width: 32rem;
+  background-color: var(--frin-color-surface);
+  border-radius: var(--frin-radius-lg);
+  box-shadow: var(--frin-shadow-lg);
+  overflow: hidden;
+  animation: frin-modal-in 180ms ease;
+}
+@keyframes frin-modal-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.frin-modal__header,
+.frin-modal__footer {
+  padding: var(--frin-space-4) var(--frin-space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--frin-space-3);
+}
+.frin-modal__header { border-bottom: 1px solid var(--frin-color-border); }
+.frin-modal__footer { border-top: 1px solid var(--frin-color-border); justify-content: flex-end; gap: var(--frin-space-2); }
+.frin-modal__title { font-size: var(--frin-font-size-lg); }
+.frin-modal__body { padding: var(--frin-space-5); }
+.frin-modal__close {
+  margin-left: auto;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--frin-color-text-muted);
+  padding: var(--frin-space-1) var(--frin-space-2);
+  border-radius: var(--frin-radius-sm);
+}
+.frin-modal__close:hover { background-color: var(--frin-color-bg-subtle); color: var(--frin-color-text); }
+
+@media (prefers-reduced-motion: reduce) {
+  .frin-modal__dialog { animation: none; }
+}

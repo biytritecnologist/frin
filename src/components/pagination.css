@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Frin CSS — Pagination
+   .frin-pagination  .frin-pagination__item  .frin-pagination__link
+   Current page: .frin-pagination__link.is-active
+   ========================================================================== */
+
+.frin-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--frin-space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.frin-pagination__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 var(--frin-space-2);
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-md);
+  color: var(--frin-color-text);
+  background-color: var(--frin-color-surface);
+  text-decoration: none;
+  font-size: var(--frin-font-size-sm);
+  transition: background-color var(--frin-transition), border-color var(--frin-transition);
+}
+.frin-pagination__link:hover { background-color: var(--frin-color-bg-subtle); text-decoration: none; }
+
+.frin-pagination__link.is-active {
+  background-color: var(--frin-color-primary);
+  border-color: var(--frin-color-primary);
+  color: var(--frin-color-on-primary);
+  font-weight: var(--frin-font-weight-medium);
+}
+
+.frin-pagination__link[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}

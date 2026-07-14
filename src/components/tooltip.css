@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Frin CSS — Tooltip
+   Wrap a trigger in .frin-tooltip and add .frin-tooltip__bubble as child.
+   Show on hover/focus via .frin-tooltip:hover / :focus-within. Use data-side.
+   ========================================================================== */
+
+.frin-tooltip {
+  position: relative;
+  display: inline-flex;
+  border-bottom: 1px dotted var(--frin-color-text-muted);
+}
+
+.frin-tooltip__bubble {
+  position: absolute;
+  z-index: var(--frin-z-tooltip);
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--frin-space-1) var(--frin-space-2);
+  background-color: var(--frin-color-secondary);
+  color: var(--frin-color-on-secondary);
+  font-size: var(--frin-font-size-xs);
+  font-weight: var(--frin-font-weight-medium);
+  border-radius: var(--frin-radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--frin-transition);
+}
+
+.frin-tooltip__bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--frin-color-secondary);
+}
+
+.frin-tooltip:hover .frin-tooltip__bubble,
+.frin-tooltip:focus-within .frin-tooltip__bubble {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Side variants */
+.frin-tooltip[data-side="right"] .frin-tooltip__bubble {
+  bottom: auto; top: 50%; left: calc(100% + 8px);
+  transform: translateY(-50%);
+}
+.frin-tooltip[data-side="right"] .frin-tooltip__bubble::after {
+  top: 50%; left: auto; right: 100%;
+  transform: translateY(-50%);
+  border-top-color: transparent; border-right-color: var(--frin-color-secondary);
+}
+.frin-tooltip[data-side="bottom"] .frin-tooltip__bubble {
+  bottom: auto; top: calc(100% + 8px);
+}
+.frin-tooltip[data-side="bottom"] .frin-tooltip__bubble::after {
+  top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: var(--frin-color-secondary);
+}
+.frin-tooltip[data-side="left"] .frin-tooltip__bubble {
+  bottom: auto; top: 50%; left: auto; right: calc(100% + 8px);
+  transform: translateY(-50%);
+}
+.frin-tooltip[data-side="left"] .frin-tooltip__bubble::after {
+  top: 50%; left: 100%; transform: translateY(-50%);
+  border-top-color: transparent; border-left-color: var(--frin-color-secondary);
+}

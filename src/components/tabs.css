@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Frin CSS — Tabs
+   .frin-tabs  .frin-tabs__list  .frin-tabs__tab  .frin-tabs__panel
+   Active tab: .frin-tabs__tab.is-active
+   (panel switching handled by JS; panels hidden unless .is-active)
+   ========================================================================== */
+
+.frin-tabs__list {
+  display: flex;
+  gap: var(--frin-space-1);
+  border-bottom: 1px solid var(--frin-color-border);
+  overflow-x: auto;
+}
+
+.frin-tabs__tab {
+  padding: var(--frin-space-3) var(--frin-space-4);
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--frin-color-text-muted);
+  font-weight: var(--frin-font-weight-medium);
+  white-space: nowrap;
+  transition: color var(--frin-transition), border-color var(--frin-transition);
+}
+.frin-tabs__tab:hover { color: var(--frin-color-text); }
+.frin-tabs__tab.is-active {
+  color: var(--frin-color-primary);
+  border-bottom-color: var(--frin-color-primary);
+}
+
+.frin-tabs__panel { padding: var(--frin-space-5) 0; display: none; }
+.frin-tabs__panel.is-active { display: block; }
+.frin-tabs__panel[hidden] { display: none; }

@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Frin CSS — variables.css (theme entry point)
+   --------------------------------------------------------------------------
+   This file simply pulls in the design tokens. To re-theme Frin CSS you do
+   NOT need to edit core files — just redefine any variable AFTER importing
+   frin.css in your own stylesheet. Example override block:
+
+   :root {
+     --frin-color-primary: #7c3aed;
+     --frin-radius-md: 4px;
+     --frin-font-family: "Inter", sans-serif;
+   }
+
+   For dark mode, override variables inside [data-theme="dark"] { ... }.
+   ========================================================================== */
+
+@import "./tokens/variables.css";

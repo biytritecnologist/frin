@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frin CSS — A tiny, themeable component CSS framework</title>
+  <meta name="description" content="Frin CSS: pure-CSS, mobile-first, accessible component framework with CSS variables theming." />
+  <link rel="stylesheet" href="dist/frin.css" />
+  <style>
+    /* Docs-only styles (not part of the framework) */
+    .docs-section { padding: var(--frin-space-7) 0; border-bottom: 1px solid var(--frin-color-border); }
+    .docs-eyebrow { color: var(--frin-color-primary); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: var(--frin-font-size-sm); }
+    .docs-example { margin-top: var(--frin-space-4); padding: var(--frin-space-5); background: var(--frin-color-bg-subtle); border: 1px solid var(--frin-color-border); border-radius: var(--frin-radius-lg); }
+    .docs-example > * + * { margin-top: var(--frin-space-3); }
+    pre[class*="docs-code"] { background: var(--frin-color-secondary); color: #eaf2ff; padding: var(--frin-space-4); border-radius: var(--frin-radius-md); overflow-x: auto; font-size: var(--frin-font-size-sm); margin-top: var(--frin-space-3); }
+    .docs-sidebar a { display:block; padding: var(--frin-space-2) var(--frin-space-3); border-radius: var(--frin-radius-md); color: var(--frin-color-text-muted); }
+    .docs-sidebar a:hover { background: var(--frin-color-bg-subtle); color: var(--frin-color-text); text-decoration:none; }
+    .docs-hero { padding: var(--frin-space-8) 0; background: linear-gradient(135deg, var(--frin-color-primary-soft), var(--frin-color-secondary-soft)); }
+    .docs-logo { height: 56px; width: auto; border-radius: var(--frin-radius-md); }
+    .frin-navbar__brand .docs-brand-logo { height: 32px; width: auto; border-radius: var(--frin-radius-sm); }
+
+    /* ---- Docs theme: derived from assets/fr.png logo palette ----
+       Primary accent  = coral  #F86848
+       Secondary accent = teal   #08A8B8
+       (overrides framework defaults for this demo page only) */
+    :root {
+      --frin-color-primary: #F86848;
+      --frin-color-primary-hover: #FA7A5E;
+      --frin-color-primary-active: #E0533A;
+      --frin-color-primary-soft: #FCE9E3;
+      --frin-color-on-primary: #2A0E07;
+      --frin-color-secondary: #08A8B8;
+      --frin-color-secondary-hover: #0BBECF;
+      --frin-color-secondary-active: #078391;
+      --frin-color-on-secondary: #ffffff;
+      --frin-color-secondary-soft: #DDF3F6;
+      --frin-color-focus-ring: #F86848;
+    }
+    [data-theme="dark"] {
+      --frin-color-primary: #FF8A6E;
+      --frin-color-primary-hover: #FFA288;
+      --frin-color-primary-active: #F86848;
+      --frin-color-primary-soft: #3A1A13;
+      --frin-color-on-primary: #2A0E07;
+      --frin-color-secondary: #2BD0E0;
+      --frin-color-secondary-hover: #4FDBEA;
+      --frin-color-secondary-active: #08A8B8;
+      --frin-color-on-secondary: #04222A;
+      --frin-color-secondary-soft: #0C2E33;
+      --frin-color-focus-ring: #FF8A6E;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="frin-navbar frin-navbar--sticky">
+    <a class="frin-navbar__brand" href="#top"><img class="docs-brand-logo" src="assets/fr.png" alt="Frin CSS logo" /> Frin CSS</a>
+    <button class="frin-navbar__toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <ul class="frin-navbar__nav">
+      <li><a class="frin-navbar__link is-active" href="#components">Components</a></li>
+      <li><a class="frin-navbar__link" href="#forms">Forms</a></li>
+      <li><a class="frin-navbar__link" href="#theming">Theming</a></li>
+      <li>
+        <button class="frin-btn frin-btn--outline frin-btn--sm" id="themeToggle" aria-pressed="false">🌙 Dark</button>
+      </li>
+    </ul>
+  </nav>
+
+  <header class="docs-hero" id="top">
+    <div class="frin-container">
+      <img class="docs-logo" src="assets/fr.png" alt="Frin CSS logo" />
+      <p class="docs-eyebrow">v1.0.0 · MIT Licensed</p>
+      <h1>Frin CSS</h1>
+      <p class="frin-text-muted" style="max-width:42rem">A tiny, pure-CSS component framework. Mobile-first, accessible by default, and themeable with CSS custom properties. No build step required.</p>
+      <div class="frin-d-flex frin-gap-2 frin-mt-5">
+        <a class="frin-btn frin-btn--primary" href="#components">Browse components</a>
+        <a class="frin-btn frin-btn--ghost" href="https://github.com/biytritecnologist/frin">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="frin-container" id="components">
+
+    <!-- ============ BUTTONS ============ -->
+    <section class="docs-section">
+      <p class="docs-eyebrow">Components</p>
+      <h2>Buttons</h2>
+      <p class="frin-text-muted">Variants: <code>--primary</code>, <code>--secondary</code>, <code>--outline</code>, <code>--ghost</code>. Sizes: <code>--sm</code>, <code>--lg</code>. Add <code>is-disabled</code> or <code>[disabled]</code>.</p>
+      <div class="docs-example">
+        <div class="frin-d-flex frin-gap-2 frin-flex-col" style="flex-direction:row;flex-wrap:wrap">
+          <button class="frin-btn frin-btn--primary">Primary</button>
+          <button class="frin-btn frin-btn--secondary">Secondary</button>
+          <button class="frin-btn frin-btn--outline">Outline</button>
+          <button class="frin-btn frin-btn--ghost">Ghost</button>
+          <button class="frin-btn frin-btn--primary" disabled>Disabled</button>
+        </div>
+        <div class="frin-d-flex frin-gap-2" style="flex-wrap:wrap">
+          <button class="frin-btn frin-btn--primary frin-btn--sm">Small</button>
+          <button class="frin-btn frin-btn--primary">Default</button>
+          <button class="frin-btn frin-btn--primary frin-btn--lg">Large</button>
+          <button class="frin-btn frin-btn--primary frin-btn--block">Block button</button>
+        </div>
+      </div>
+      <pre class="docs-code"><code>&lt;button class="frin-btn frin-btn--primary"&gt;Primary&lt;/button&gt;
+&lt;button class="frin-btn frin-btn--outline frin-btn--lg"&gt;Large&lt;/button&gt;
+&lt;button class="frin-btn frin-btn--primary" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+    </section>
+
+    <!-- ============ CARDS ============ -->
+    <section class="docs-section">
+      <h2>Cards</h2>
+      <div class="docs-example">
+        <div class="frin-row">
+          <div class="frin-col-4">
+            <article class="frin-card frin-card--raised">
+              <img class="frin-card__media" src="https://picsum.photos/seed/frin/400/200" alt="Demo" />
+              <div class="frin-card__body">
+                <h3 class="frin-card__title">Card title</h3>
+                <p class="frin-card__subtitle">Supporting subtitle text here.</p>
+                <p>Some quick example text to build out the card body content.</p>
+                <button class="frin-btn frin-btn--primary frin-btn--sm">Action</button>
+              </div>
+            </article>
+          </div>
+          <div class="frin-col-4">
+            <article class="frin-card">
+              <div class="frin-card__header">
+                <strong>With header</strong>
+                <span class="frin-badge frin-badge--success">New</span>
+              </div>
+              <div class="frin-card__body"><p>Card with a structured header and footer.</p></div>
+              <div class="frin-card__footer"><button class="frin-btn frin-btn--ghost frin-btn--sm">Cancel</button></div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <pre class="docs-code"><code>&lt;article class="frin-card frin-card--raised"&gt;
+  &lt;div class="frin-card__body"&gt;
+    &lt;h3 class="frin-card__title"&gt;Title&lt;/h3&gt;
+    &lt;p&gt;Body content&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+    </section>
+
+    <!-- ============ FORMS ============ -->
+    <section class="docs-section" id="forms">
+      <h2>Forms</h2>
+      <div class="docs-example">
+        <form class="frin-form" onsubmit="return false">
+          <div class="frin-form-group">
+            <label class="frin-label" for="ex-email">Email <span class="frin-required">*</span></label>
+            <input class="frin-input" id="ex-email" type="email" placeholder="you@example.com" required />
+            <span class="frin-form-hint">We'll never share your email.</span>
+          </div>
+          <div class="frin-form-group">
+            <label class="frin-label" for="ex-select">Role</label>
+            <select class="frin-select" id="ex-select">
+              <option>Developer</option><option>Designer</option><option>PM</option>
+            </select>
+          </div>
+          <div class="frin-form-group">
+            <label class="frin-label" for="ex-invalid">Username</label>
+            <input class="frin-input frin-input--invalid" id="ex-invalid" value="ab" />
+            <span class="frin-form-hint frin-form-hint--invalid">Too short (min 4 chars).</span>
+          </div>
+          <div class="frin-form-group">
+            <label class="frin-label" for="ex-ta">Message</label>
+            <textarea class="frin-textarea" id="ex-ta" placeholder="Say hello…"></textarea>
+          </div>
+          <div class="frin-d-flex frin-gap-4">
+            <label class="frin-check"><input type="checkbox" checked /> Remember me</label>
+            <label class="frin-radio"><input type="radio" name="plan" checked /> Free</label>
+            <label class="frin-radio"><input type="radio" name="plan" /> Pro</label>
+          </div>
+          <div class="frin-mt-4"><button class="frin-btn frin-btn--primary" type="submit">Submit</button></div>
+        </form>
+      </div>
+      <pre class="docs-code"><code>&lt;div class="frin-form-group"&gt;
+  &lt;label class="frin-label" for="email"&gt;Email&lt;/label&gt;
+  &lt;input class="frin-input" id="email" type="email" /&gt;
+&lt;/div&gt;
+&lt;label class="frin-check"&gt;&lt;input type="checkbox" /&gt; Remember me&lt;/label&gt;</code></pre>
+    </section>
+
+    <!-- ============ ALERTS & BADGES ============ -->
+    <section class="docs-section">
+      <h2>Alerts &amp; Badges</h2>
+      <div class="docs-example">
+        <div class="frin-alert frin-alert--info"><span class="frin-alert__icon">ℹ️</span><div class="frin-alert__body"><strong class="frin-alert__title">Heads up</strong> This is an info alert.</div></div>
+        <div class="frin-alert frin-alert--success"><span class="frin-alert__icon">✅</span><div class="frin-alert__body"><strong class="frin-alert__title">Success</strong> Changes saved.</div></div>
+        <div class="frin-alert frin-alert--warning"><span class="frin-alert__icon">⚠️</span><div class="frin-alert__body"><strong class="frin-alert__title">Warning</strong> Quota almost reached.</div></div>
+        <div class="frin-alert frin-alert--danger"><span class="frin-alert__icon">⛔</span><div class="frin-alert__body"><strong class="frin-alert__title">Error</strong> Something went wrong.</div><button class="frin-alert__close" aria-label="Dismiss">×</button></div>
+        <div class="frin-d-flex frin-gap-2">
+          <span class="frin-badge">Default</span>
+          <span class="frin-badge frin-badge--primary">Primary</span>
+          <span class="frin-badge frin-badge--success">Success</span>
+          <span class="frin-badge frin-badge--warning">Warning</span>
+          <span class="frin-badge frin-badge--danger">Danger</span>
+          <span class="frin-badge frin-badge--info frin-badge--soft">Info</span>
+        </div>
+      </div>
+      <pre class="docs-code"><code>&lt;div class="frin-alert frin-alert--success"&gt;Saved!&lt;/div&gt;
+&lt;span class="frin-badge frin-badge--primary"&gt;New&lt;/span&gt;</code></pre>
+    </section>
+
+    <!-- ============ MODAL ============ -->
+    <section class="docs-section">
+      <h2>Modal</h2>
+      <p class="frin-text-muted">Opened via <code>data-frin-open-modal="#id"</code>. Close with the × button, backdrop click, or Esc. Requires <code>frin.js</code>.</p>
+      <div class="docs-example">
+        <button class="frin-btn frin-btn--primary" data-frin-open-modal="demoModal">Open modal</button>
+      </div>
+      <div class="frin-modal" id="demoModal" hidden role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
+        <div class="frin-modal__dialog">
+          <div class="frin-modal__header"><h3 class="frin-modal__title" id="demoModalTitle">Confirm action</h3><button class="frin-modal__close" aria-label="Close">×</button></div>
+          <div class="frin-modal__body"><p>Are you sure you want to continue? This cannot be undone.</p></div>
+          <div class="frin-modal__footer"><button class="frin-btn frin-btn--ghost" data-frin-close-modal>Cancel</button><button class="frin-btn frin-btn--primary">Confirm</button></div>
+        </div>
+      </div>
+      <pre class="docs-code"><code>&lt;button data-frin-open-modal="demoModal"&gt;Open modal&lt;/button&gt;
+&lt;div class="frin-modal" id="demoModal" hidden role="dialog" aria-modal="true"&gt;
+  &lt;div class="frin-modal__dialog"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <!-- ============ DROPDOWN ============ -->
+    <section class="docs-section">
+      <h2>Dropdown</h2>
+      <div class="docs-example">
+        <div class="frin-dropdown">
+          <button class="frin-btn frin-btn--secondary frin-dropdown__toggle" aria-haspopup="true" aria-expanded="false">Menu ▾</button>
+          <div class="frin-dropdown__menu">
+            <a class="frin-dropdown__item is-active" href="#">Profile</a>
+            <a class="frin-dropdown__item" href="#">Settings</a>
+            <div class="frin-dropdown__divider"></div>
+            <a class="frin-dropdown__item" href="#">Sign out</a>
+          </div>
+        </div>
+      </div>
+      <pre class="docs-code"><code>&lt;div class="frin-dropdown"&gt;
+  &lt;button class="frin-btn frin-dropdown__toggle"&gt;Menu&lt;/button&gt;
+  &lt;div class="frin-dropdown__menu"&gt;
+    &lt;a class="frin-dropdown__item" href="#"&gt;Item&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <!-- ============ TABS ============ -->
+    <section class="docs-section">
+      <h2>Tabs</h2>
+      <div class="docs-example">
+        <div class="frin-tabs">
+          <div class="frin-tabs__list" role="tablist">
+            <button class="frin-tabs__tab is-active" role="tab" aria-selected="true" aria-controls="p1" data-panel="p1">Overview</button>
+            <button class="frin-tabs__tab" role="tab" aria-selected="false" aria-controls="p2" data-panel="p2">Specs</button>
+            <button class="frin-tabs__tab" role="tab" aria-selected="false" aria-controls="p3" data-panel="p3">Reviews</button>
+          </div>
+          <div class="frin-tabs__panel is-active" id="p1" role="tabpanel" data-panel="p1">Overview content goes here.</div>
+          <div class="frin-tabs__panel" id="p2" role="tabpanel" data-panel="p2" hidden>Technical specifications.</div>
+          <div class="frin-tabs__panel" id="p3" role="tabpanel" data-panel="p3" hidden>User reviews.</div>
+        </div>
+      </div>
+      <pre class="docs-code"><code>&lt;div class="frin-tabs"&gt;
+  &lt;div class="frin-tabs__list" role="tablist"&gt;
+    &lt;button class="frin-tabs__tab is-active" role="tab" aria-controls="p1"&gt;One&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="frin-tabs__panel is-active" id="p1" role="tabpanel"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <!-- ============ TOOLTIP ============ -->
+    <section class="docs-section">
+      <h2>Tooltip</h2>
+      <div class="docs-example">
+        <span class="frin-tooltip">Hover me
+          <span class="frin-tooltip__bubble" role="tooltip">Helpful hint</span>
+        </span>
+        <span class="frin-tooltip" data-side="right">Right side
+          <span class="frin-tooltip__bubble" role="tooltip">On the right</span>
+        </span>
+      </div>
+      <pre class="docs-code"><code>&lt;span class="frin-tooltip"&gt;Hover me
+  &lt;span class="frin-tooltip__bubble" role="tooltip"&gt;Hint&lt;/span&gt;
+&lt;/span&gt;</code></pre>
+    </section>
+
+    <!-- ============ PAGINATION ============ -->
+    <section class="docs-section">
+      <h2>Pagination</h2>
+      <div class="docs-example">
+        <nav aria-label="Pagination"><ul class="frin-pagination">
+          <li><a class="frin-pagination__link" href="#" aria-disabled="true">‹</a></li>
+          <li><a class="frin-pagination__link is-active" href="#" aria-current="page">1</a></li>
+          <li><a class="frin-pagination__link" href="#">2</a></li>
+          <li><a class="frin-pagination__link" href="#">3</a></li>
+          <li><a class="frin-pagination__link" href="#">›</a></li>
+        </ul></nav>
+      </div>
+      <pre class="docs-code"><code>&lt;ul class="frin-pagination"&gt;
+  &lt;li&gt;&lt;a class="frin-pagination__link is-active" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    </section>
+
+    <!-- ============ TABLE ============ -->
+    <section class="docs-section">
+      <h2>Table</h2>
+      <div class="docs-example">
+        <div class="frin-table-wrapper">
+          <table class="frin-table frin-table--striped frin-table--hover">
+            <thead><tr><th>Name</th><th>Role</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Ada</td><td>Engineer</td><td><span class="frin-badge frin-badge--success">Active</span></td></tr>
+              <tr><td>Lin</td><td>Designer</td><td><span class="frin-badge frin-badge--warning">Pending</span></td></tr>
+              <tr><td>Sam</td><td>PM</td><td><span class="frin-badge frin-badge--danger">Off</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <pre class="docs-code"><code>&lt;table class="frin-table frin-table--striped frin-table--hover"&gt;…&lt;/table&gt;</code></pre>
+    </section>
+
+    <!-- ============ THEMING ============ -->
+    <section class="docs-section" id="theming">
+      <h2>Theming</h2>
+      <p class="frin-text-muted">Override CSS variables in your own stylesheet — no build step, no editing core files. Toggle the 🌙 button above for dark mode.</p>
+      <pre class="docs-code"><code>:root {
+  --frin-color-primary: #7c3aed;
+  --frin-radius-md: 4px;
+  --frin-font-family: "Inter", sans-serif;
+}
+[data-theme="dark"] {
+  --frin-color-bg: #0d1424;
+}</code></pre>
+    </section>
+
+  </main>
+
+  <footer class="frin-container frin-mt-5 frin-mb-5 frin-text-muted" style="padding-bottom:3rem">
+    <p>Frin CSS · MIT License · Built with CSS custom properties.</p>
+  </footer>
+
+  <script src="dist/frin.js"></script>
+  <script>
+    // Docs-only: dark mode toggle
+    var toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", function () {
+      var html = document.documentElement;
+      var dark = html.getAttribute("data-theme") === "dark";
+      html.setAttribute("data-theme", dark ? "light" : "dark");
+      toggle.textContent = dark ? "🌙 Dark" : "☀️ Light";
+      toggle.setAttribute("aria-pressed", String(!dark));
+    });
+  </script>
+</body>
+</html>

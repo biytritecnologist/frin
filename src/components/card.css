@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Frin CSS — Card
+   .frin-card  .frin-card__header|body|footer  .frin-card__title|subtitle
+   Modifiers: .frin-card--raised  .frin-card--flush
+   ========================================================================== */
+
+.frin-card {
+  background-color: var(--frin-color-surface);
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.frin-card--raised { box-shadow: var(--frin-shadow-md); }
+
+.frin-card__header {
+  padding: var(--frin-space-4) var(--frin-space-5);
+  border-bottom: 1px solid var(--frin-color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--frin-space-3);
+}
+
+.frin-card__body { padding: var(--frin-space-5); flex: 1 1 auto; }
+
+.frin-card__footer {
+  padding: var(--frin-space-4) var(--frin-space-5);
+  border-top: 1px solid var(--frin-color-border);
+  background-color: var(--frin-color-bg-subtle);
+}
+
+.frin-card__title { font-size: var(--frin-font-size-lg); margin-bottom: var(--frin-space-1); }
+.frin-card__subtitle { color: var(--frin-color-text-muted); font-size: var(--frin-font-size-sm); }
+
+.frin-card--flush .frin-card__body,
+.frin-card--flush .frin-card__header,
+.frin-card--flush .frin-card__footer { padding: 0; }
+
+.frin-card__media { width: 100%; height: auto; display: block; }

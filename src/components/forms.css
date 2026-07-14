@@ -1,0 +1,167 @@
+/* ==========================================================================
+   Frin CSS — Forms
+   .frin-form, .frin-form-group, .frin-label
+   .frin-input, .frin-textarea, .frin-select
+   .frin-checkbox, .frin-radio (custom styled)
+   Validation: .frin-input--invalid / .frin-input--valid  (+ .frin-form-hint)
+   ========================================================================== */
+
+.frin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--frin-space-1);
+  margin-bottom: var(--frin-space-4);
+}
+
+.frin-label {
+  font-size: var(--frin-font-size-sm);
+  font-weight: var(--frin-font-weight-medium);
+  color: var(--frin-color-text);
+}
+
+.frin-label .frin-required { color: var(--frin-color-danger); margin-left: 2px; }
+
+/* Base control */
+.frin-input,
+.frin-textarea,
+.frin-select {
+  width: 100%;
+  padding: var(--frin-space-2) var(--frin-space-3);
+  font-size: var(--frin-font-size-base);
+  color: var(--frin-color-text);
+  background-color: var(--frin-color-surface);
+  border: 1px solid var(--frin-color-border-strong);
+  border-radius: var(--frin-radius-md);
+  transition: border-color var(--frin-transition),
+              box-shadow var(--frin-transition);
+}
+
+.frin-textarea { min-height: 6rem; resize: vertical; line-height: var(--frin-line-height-base); }
+
+.frin-input::placeholder,
+.frin-textarea::placeholder { color: var(--frin-color-text-muted); opacity: 0.8; }
+
+.frin-input:hover,
+.frin-textarea:hover,
+.frin-select:hover { border-color: var(--frin-color-primary); }
+
+.frin-input:focus,
+.frin-textarea:focus,
+.frin-select:focus {
+  outline: none;
+  border-color: var(--frin-color-primary);
+  box-shadow: 0 0 0 3px var(--frin-color-primary-soft);
+}
+
+.frin-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235a6678' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--frin-space-3) center;
+  padding-right: var(--frin-space-7);
+}
+
+/* Validation states */
+.frin-input--invalid,
+.frin-textarea--invalid,
+.frin-select--invalid {
+  border-color: var(--frin-color-danger);
+}
+.frin-input--invalid:focus,
+.frin-textarea--invalid:focus,
+.frin-select--invalid:focus {
+  box-shadow: 0 0 0 3px var(--frin-color-danger-soft);
+}
+
+.frin-input--valid,
+.frin-textarea--valid,
+.frin-select--valid {
+  border-color: var(--frin-color-success);
+}
+.frin-input--valid:focus,
+.frin-textarea--valid:focus,
+.frin-select--valid:focus {
+  box-shadow: 0 0 0 3px var(--frin-color-success-soft);
+}
+
+.frin-form-hint { font-size: var(--frin-font-size-xs); color: var(--frin-color-text-muted); }
+.frin-form-hint--invalid { color: var(--frin-color-danger); }
+.frin-form-hint--valid { color: var(--frin-color-success); }
+
+/* Disabled */
+.frin-input:disabled,
+.frin-textarea:disabled,
+.frin-select:disabled {
+  background-color: var(--frin-color-bg-subtle);
+  color: var(--frin-color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Checkbox & Radio — accessible custom styling */
+.frin-check,
+.frin-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--frin-space-2);
+  font-size: var(--frin-font-size-base);
+  cursor: pointer;
+}
+
+.frin-check input[type="checkbox"],
+.frin-radio input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  border: 1.5px solid var(--frin-color-border-strong);
+  background-color: var(--frin-color-surface);
+  display: inline-grid;
+  place-content: center;
+  transition: border-color var(--frin-transition),
+              background-color var(--frin-transition);
+  flex: 0 0 auto;
+}
+.frin-check input[type="checkbox"] { border-radius: var(--frin-radius-sm); }
+.frin-radio input[type="radio"] { border-radius: var(--frin-radius-circle); }
+
+.frin-check input[type="checkbox"]::before,
+.frin-radio input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: transform 120ms ease;
+}
+
+.frin-check input[type="checkbox"]::before {
+  background-color: var(--frin-color-on-primary);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+.frin-radio input[type="radio"]::before {
+  background-color: var(--frin-color-on-primary);
+  border-radius: var(--frin-radius-circle);
+}
+
+.frin-check input[type="checkbox"]:checked,
+.frin-radio input[type="radio"]:checked {
+  background-color: var(--frin-color-primary);
+  border-color: var(--frin-color-primary);
+}
+.frin-check input[type="checkbox"]:checked::before,
+.frin-radio input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.frin-check input:focus-visible,
+.frin-radio input:focus-visible {
+  outline: 3px solid var(--frin-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.frin-check input:disabled,
+.frin-radio input:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}

@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Frin CSS — Dropdown
+   .frin-dropdown (wrapper)  .frin-dropdown__toggle  .frin-dropdown__menu
+   .frin-dropdown__item      .frin-dropdown__divider
+   Open state: .frin-dropdown.is-open  (toggled via JS or :focus-within)
+   ========================================================================== */
+
+.frin-dropdown { position: relative; display: inline-block; }
+
+.frin-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: var(--frin-z-dropdown);
+  min-width: 12rem;
+  padding: var(--frin-space-1);
+  background-color: var(--frin-color-surface-raised);
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-md);
+  box-shadow: var(--frin-shadow-md);
+  display: none;
+}
+.frin-dropdown.is-open .frin-dropdown__menu,
+.frin-dropdown:focus-within .frin-dropdown__menu { display: block; }
+
+.frin-dropdown__item {
+  display: block;
+  width: 100%;
+  padding: var(--frin-space-2) var(--frin-space-3);
+  border-radius: var(--frin-radius-sm);
+  color: var(--frin-color-text);
+  text-decoration: none;
+  font-size: var(--frin-font-size-sm);
+  text-align: left;
+}
+.frin-dropdown__item:hover,
+.frin-dropdown__item:focus-visible {
+  background-color: var(--frin-color-bg-subtle);
+  text-decoration: none;
+  color: var(--frin-color-text);
+}
+.frin-dropdown__item.is-active { color: var(--frin-color-primary); font-weight: var(--frin-font-weight-medium); }
+
+.frin-dropdown__divider {
+  height: 0;
+  margin: var(--frin-space-1) 0;
+  border-top: 1px solid var(--frin-color-border);
+}

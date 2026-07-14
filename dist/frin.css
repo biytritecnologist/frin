@@ -1,0 +1,1088 @@
+﻿/* Frin CSS v1.0.0 | MIT License | https://github.com/biytritecnologist/frin */
+/* ==========================================================================
+   Frin CSS â€” Design Tokens
+   --------------------------------------------------------------------------
+   All themeable values live here as CSS custom properties.
+   Override any variable in your own stylesheet AFTER importing frin.css to
+   re-theme the whole framework. No build step required.
+   ========================================================================== */
+
+:root {
+  /* --- Brand & accent colors ------------------------------------------- */
+  --frin-color-primary: #00bfff;        /* Sky Blue */
+  --frin-color-primary-hover: #33ccff;
+  --frin-color-primary-active: #009fd9;
+  --frin-color-primary-soft: #e0f7ff;   /* tint used for soft backgrounds */
+  --frin-color-on-primary: #04293a;     /* text on primary (dark for contrast) */
+
+  --frin-color-secondary: #0b1f3a;      /* Deep Navy */
+  --frin-color-secondary-hover: #15335c;
+  --frin-color-secondary-active: #08182c;
+  --frin-color-on-secondary: #ffffff;
+  --frin-color-secondary-soft: #e7ecf5;
+
+  /* --- Neutral palette (light theme defaults) -------------------------- */
+  --frin-color-bg: #ffffff;
+  --frin-color-bg-subtle: #f5f7fa;
+  --frin-color-surface: #ffffff;
+  --frin-color-surface-raised: #ffffff;
+  --frin-color-border: #e1e6ec;
+  --frin-color-border-strong: #c3ccd6;
+
+  --frin-color-text: #1a2433;
+  --frin-color-text-muted: #5a6678;
+  --frin-color-text-inverse: #f5f7fa;
+
+  /* --- Semantic / state colors ----------------------------------------- */
+  --frin-color-success: #1f9d55;
+  --frin-color-success-soft: #e3f6ea;
+  --frin-color-danger: #d6324a;
+  --frin-color-danger-soft: #fbe5e9;
+  --frin-color-warning: #c98300;
+  --frin-color-warning-soft: #fcf3df;
+  --frin-color-info: #1c7fb8;
+  --frin-color-info-soft: #e3f1f9;
+
+  --frin-color-focus-ring: #00bfff;
+
+  /* --- Typography ------------------------------------------------------ */
+  --frin-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  --frin-font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo,
+    Consolas, "Liberation Mono", monospace;
+
+  --frin-font-size-xs: 0.75rem;   /* 12px */
+  --frin-font-size-sm: 0.875rem;  /* 14px */
+  --frin-font-size-base: 1rem;    /* 16px */
+  --frin-font-size-lg: 1.125rem;  /* 18px */
+  --frin-font-size-xl: 1.375rem;  /* 22px */
+  --frin-font-size-2xl: 1.75rem;  /* 28px */
+  --frin-font-size-3xl: 2.25rem;  /* 36px */
+
+  --frin-font-weight-normal: 400;
+  --frin-font-weight-medium: 500;
+  --frin-font-weight-bold: 700;
+
+  --frin-line-height-base: 1.5;
+  --frin-line-height-tight: 1.25;
+
+  /* --- Spacing scale (4px base unit) ----------------------------------- */
+  --frin-space-0: 0;
+  --frin-space-1: 0.25rem;  /* 4px  */
+  --frin-space-2: 0.5rem;   /* 8px  */
+  --frin-space-3: 0.75rem;  /* 12px */
+  --frin-space-4: 1rem;     /* 16px */
+  --frin-space-5: 1.5rem;   /* 24px */
+  --frin-space-6: 2rem;     /* 32px */
+  --frin-space-7: 3rem;     /* 48px */
+  --frin-space-8: 4rem;     /* 64px */
+
+  /* --- Border radius (soft / rounded) ---------------------------------- */
+  --frin-radius-sm: 0.375rem;  /* 6px  */
+  --frin-radius-md: 0.625rem;  /* 10px */
+  --frin-radius-lg: 1rem;      /* 16px */
+  --frin-radius-pill: 999px;
+  --frin-radius-circle: 50%;
+
+  /* --- Shadows --------------------------------------------------------- */
+  --frin-shadow-sm: 0 1px 2px rgba(11, 31, 58, 0.08);
+  --frin-shadow-md: 0 4px 12px rgba(11, 31, 58, 0.10);
+  --frin-shadow-lg: 0 12px 32px rgba(11, 31, 58, 0.16);
+
+  /* --- Layout ---------------------------------------------------------- */
+  --frin-container-max: 1140px;
+  --frin-grid-gutter: var(--frin-space-4);
+  --frin-z-dropdown: 1000;
+  --frin-z-sticky: 1020;
+  --frin-z-modal-backdrop: 1040;
+  --frin-z-modal: 1050;
+  --frin-z-tooltip: 1080;
+
+  /* --- Motion ---------------------------------------------------------- */
+  --frin-transition: 150ms ease;
+}
+
+/* ==========================================================================
+   Dark theme â€” activate with data-theme="dark" on <html> or <body>
+   ========================================================================== */
+[data-theme="dark"] {
+  --frin-color-primary: #33ccff;
+  --frin-color-primary-hover: #66d9ff;
+  --frin-color-primary-active: #00bfff;
+  --frin-color-primary-soft: #0c2a3a;
+  --frin-color-on-primary: #04212e;
+
+  --frin-color-secondary: #1b3a66;
+  --frin-color-secondary-hover: #274f86;
+  --frin-color-secondary-active: #15335c;
+  --frin-color-on-secondary: #ffffff;
+  --frin-color-secondary-soft: #14233d;
+
+  --frin-color-bg: #0d1424;
+  --frin-color-bg-subtle: #111a2e;
+  --frin-color-surface: #16203a;
+  --frin-color-surface-raised: #1d2a4a;
+  --frin-color-border: #2a3654;
+  --frin-color-border-strong: #3a486b;
+
+  --frin-color-text: #eef2f8;
+  --frin-color-text-muted: #9aa6bc;
+  --frin-color-text-inverse: #0d1424;
+
+  --frin-color-success: #4cd089;
+  --frin-color-success-soft: #0f2e1e;
+  --frin-color-danger: #ff6b81;
+  --frin-color-danger-soft: #3a1620;
+  --frin-color-warning: #f0ba4d;
+  --frin-color-warning-soft: #3a2e10;
+  --frin-color-info: #5cb8eb;
+  --frin-color-info-soft: #0f2a3a;
+
+  --frin-color-focus-ring: #66d9ff;
+  --frin-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --frin-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --frin-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+/* ==========================================================================
+   Frin CSS â€” Reset & Base
+   A small, modern normalize scoped to avoid global collisions.
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--frin-font-family);
+  font-size: var(--frin-font-size-base);
+  line-height: var(--frin-line-height-base);
+  color: var(--frin-color-text);
+  background-color: var(--frin-color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--frin-font-weight-bold);
+  line-height: var(--frin-line-height-tight);
+  color: var(--frin-color-text);
+}
+
+h1 { font-size: var(--frin-font-size-3xl); }
+h2 { font-size: var(--frin-font-size-2xl); }
+h3 { font-size: var(--frin-font-size-xl); }
+h4 { font-size: var(--frin-font-size-lg); }
+h5, h6 { font-size: var(--frin-font-size-base); }
+
+p { margin: 0 0 var(--frin-space-4); }
+
+a {
+  color: var(--frin-color-primary);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button { cursor: pointer; background: none; border: 0; }
+
+ul[class], ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+code, kbd, pre, samp {
+  font-family: var(--frin-font-family-mono);
+  font-size: 0.95em;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--frin-color-border);
+  margin: var(--frin-space-5) 0;
+}
+
+/* Accessible focus â€” visible only for keyboard users */
+:focus-visible {
+  outline: 3px solid var(--frin-color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--frin-radius-sm);
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Screen-reader-only utility (still prefixed to avoid collisions) */
+.frin-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Layout & Grid â€” container / row / col (flex-based, mobile-first)
+   ========================================================================== */
+
+.frin-container {
+  width: 100%;
+  max-width: var(--frin-container-max);
+  margin-inline: auto;
+  padding-inline: var(--frin-space-4);
+}
+
+.frin-container--fluid {
+  max-width: none;
+}
+
+.frin-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--frin-grid-gutter);
+}
+
+.frin-col {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Responsive column spans (12-col mental model, flex-based) */
+.frin-col-1  { flex: 0 0 calc(8.333%  - var(--frin-grid-gutter)); }
+.frin-col-2  { flex: 0 0 calc(16.667% - var(--frin-grid-gutter)); }
+.frin-col-3  { flex: 0 0 calc(25%     - var(--frin-grid-gutter)); }
+.frin-col-4  { flex: 0 0 calc(33.333% - var(--frin-grid-gutter)); }
+.frin-col-5  { flex: 0 0 calc(41.667% - var(--frin-grid-gutter)); }
+.frin-col-6  { flex: 0 0 calc(50%     - var(--frin-grid-gutter)); }
+.frin-col-7  { flex: 0 0 calc(58.333% - var(--frin-grid-gutter)); }
+.frin-col-8  { flex: 0 0 calc(66.667% - var(--frin-grid-gutter)); }
+.frin-col-9  { flex: 0 0 calc(75%     - var(--frin-grid-gutter)); }
+.frin-col-10 { flex: 0 0 calc(83.333% - var(--frin-grid-gutter)); }
+.frin-col-11 { flex: 0 0 calc(91.667% - var(--frin-grid-gutter)); }
+.frin-col-12 { flex: 0 0 calc(100%    - var(--frin-grid-gutter)); }
+
+.frin-col--auto { flex: 0 0 auto; }
+
+/* Tablet: collapse multi-column spans to full width unless they opt in */
+@media (max-width: 768px) {
+  .frin-col-1, .frin-col-2, .frin-col-3, .frin-col-4,
+  .frin-col-5, .frin-col-6, .frin-col-7, .frin-col-8,
+  .frin-col-9, .frin-col-10, .frin-col-11 {
+    flex: 0 0 calc(100% - var(--frin-grid-gutter));
+  }
+}
+
+/* Flex helpers */
+.frin-d-flex    { display: flex; }
+.frin-d-block   { display: block; }
+.frin-d-grid    { display: grid; }
+.frin-flex-col  { flex-direction: column; }
+.frin-items-center { align-items: center; }
+.frin-justify-between { justify-content: space-between; }
+.frin-justify-center { justify-content: center; }
+.frin-gap-2 { gap: var(--frin-space-2); }
+.frin-gap-4 { gap: var(--frin-space-4); }
+.frin-gap-5 { gap: var(--frin-space-5); }
+
+.frin-text-center { text-align: center; }
+.frin-text-muted  { color: var(--frin-color-text-muted); }
+
+.frin-mt-4 { margin-top: var(--frin-space-4); }
+.frin-mt-5 { margin-top: var(--frin-space-5); }
+.frin-mb-4 { margin-bottom: var(--frin-space-4); }
+.frin-mb-5 { margin-bottom: var(--frin-space-5); }
+
+/* ==========================================================================
+   Frin CSS â€” Buttons
+   .frin-btn  .frin-btn--primary|secondary|outline|ghost
+              .frin-btn--sm|lg  .frin-btn--block
+   States: is-disabled (use [disabled] or aria-disabled)
+   ========================================================================== */
+
+.frin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--frin-space-2);
+  padding: var(--frin-space-2) var(--frin-space-4);
+  font-size: var(--frin-font-size-base);
+  font-weight: var(--frin-font-weight-medium);
+  line-height: 1.2;
+  border-radius: var(--frin-radius-md);
+  border: 1px solid transparent;
+  background-color: var(--frin-color-bg-subtle);
+  color: var(--frin-color-text);
+  transition: background-color var(--frin-transition),
+              border-color var(--frin-transition),
+              color var(--frin-transition),
+              transform var(--frin-transition);
+  user-select: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.frin-btn:hover { text-decoration: none; background-color: var(--frin-color-border); }
+.frin-btn:active { transform: translateY(1px); }
+
+/* Variants */
+.frin-btn--primary {
+  background-color: var(--frin-color-primary);
+  color: var(--frin-color-on-primary);
+  border-color: var(--frin-color-primary);
+}
+.frin-btn--primary:hover {
+  background-color: var(--frin-color-primary-hover);
+  border-color: var(--frin-color-primary-hover);
+}
+
+.frin-btn--secondary {
+  background-color: var(--frin-color-secondary);
+  color: var(--frin-color-on-secondary);
+  border-color: var(--frin-color-secondary);
+}
+.frin-btn--secondary:hover {
+  background-color: var(--frin-color-secondary-hover);
+  border-color: var(--frin-color-secondary-hover);
+}
+
+.frin-btn--outline {
+  background-color: transparent;
+  color: var(--frin-color-primary);
+  border-color: var(--frin-color-primary);
+}
+.frin-btn--outline:hover {
+  background-color: var(--frin-color-primary-soft);
+}
+
+.frin-btn--ghost {
+  background-color: transparent;
+  color: var(--frin-color-text);
+  border-color: transparent;
+}
+.frin-btn--ghost:hover {
+  background-color: var(--frin-color-bg-subtle);
+}
+
+/* Sizes */
+.frin-btn--sm {
+  padding: var(--frin-space-1) var(--frin-space-3);
+  font-size: var(--frin-font-size-sm);
+}
+.frin-btn--lg {
+  padding: var(--frin-space-3) var(--frin-space-5);
+  font-size: var(--frin-font-size-lg);
+}
+
+/* Block */
+.frin-btn--block { display: flex; width: 100%; }
+
+/* Disabled */
+.frin-btn:disabled,
+.frin-btn[aria-disabled="true"],
+.frin-btn.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Frin CSS â€” Forms
+   .frin-form, .frin-form-group, .frin-label
+   .frin-input, .frin-textarea, .frin-select
+   .frin-checkbox, .frin-radio (custom styled)
+   Validation: .frin-input--invalid / .frin-input--valid  (+ .frin-form-hint)
+   ========================================================================== */
+
+.frin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--frin-space-1);
+  margin-bottom: var(--frin-space-4);
+}
+
+.frin-label {
+  font-size: var(--frin-font-size-sm);
+  font-weight: var(--frin-font-weight-medium);
+  color: var(--frin-color-text);
+}
+
+.frin-label .frin-required { color: var(--frin-color-danger); margin-left: 2px; }
+
+/* Base control */
+.frin-input,
+.frin-textarea,
+.frin-select {
+  width: 100%;
+  padding: var(--frin-space-2) var(--frin-space-3);
+  font-size: var(--frin-font-size-base);
+  color: var(--frin-color-text);
+  background-color: var(--frin-color-surface);
+  border: 1px solid var(--frin-color-border-strong);
+  border-radius: var(--frin-radius-md);
+  transition: border-color var(--frin-transition),
+              box-shadow var(--frin-transition);
+}
+
+.frin-textarea { min-height: 6rem; resize: vertical; line-height: var(--frin-line-height-base); }
+
+.frin-input::placeholder,
+.frin-textarea::placeholder { color: var(--frin-color-text-muted); opacity: 0.8; }
+
+.frin-input:hover,
+.frin-textarea:hover,
+.frin-select:hover { border-color: var(--frin-color-primary); }
+
+.frin-input:focus,
+.frin-textarea:focus,
+.frin-select:focus {
+  outline: none;
+  border-color: var(--frin-color-primary);
+  box-shadow: 0 0 0 3px var(--frin-color-primary-soft);
+}
+
+.frin-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235a6678' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--frin-space-3) center;
+  padding-right: var(--frin-space-7);
+}
+
+/* Validation states */
+.frin-input--invalid,
+.frin-textarea--invalid,
+.frin-select--invalid {
+  border-color: var(--frin-color-danger);
+}
+.frin-input--invalid:focus,
+.frin-textarea--invalid:focus,
+.frin-select--invalid:focus {
+  box-shadow: 0 0 0 3px var(--frin-color-danger-soft);
+}
+
+.frin-input--valid,
+.frin-textarea--valid,
+.frin-select--valid {
+  border-color: var(--frin-color-success);
+}
+.frin-input--valid:focus,
+.frin-textarea--valid:focus,
+.frin-select--valid:focus {
+  box-shadow: 0 0 0 3px var(--frin-color-success-soft);
+}
+
+.frin-form-hint { font-size: var(--frin-font-size-xs); color: var(--frin-color-text-muted); }
+.frin-form-hint--invalid { color: var(--frin-color-danger); }
+.frin-form-hint--valid { color: var(--frin-color-success); }
+
+/* Disabled */
+.frin-input:disabled,
+.frin-textarea:disabled,
+.frin-select:disabled {
+  background-color: var(--frin-color-bg-subtle);
+  color: var(--frin-color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Checkbox & Radio â€” accessible custom styling */
+.frin-check,
+.frin-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--frin-space-2);
+  font-size: var(--frin-font-size-base);
+  cursor: pointer;
+}
+
+.frin-check input[type="checkbox"],
+.frin-radio input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  border: 1.5px solid var(--frin-color-border-strong);
+  background-color: var(--frin-color-surface);
+  display: inline-grid;
+  place-content: center;
+  transition: border-color var(--frin-transition),
+              background-color var(--frin-transition);
+  flex: 0 0 auto;
+}
+.frin-check input[type="checkbox"] { border-radius: var(--frin-radius-sm); }
+.frin-radio input[type="radio"] { border-radius: var(--frin-radius-circle); }
+
+.frin-check input[type="checkbox"]::before,
+.frin-radio input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: transform 120ms ease;
+}
+
+.frin-check input[type="checkbox"]::before {
+  background-color: var(--frin-color-on-primary);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+.frin-radio input[type="radio"]::before {
+  background-color: var(--frin-color-on-primary);
+  border-radius: var(--frin-radius-circle);
+}
+
+.frin-check input[type="checkbox"]:checked,
+.frin-radio input[type="radio"]:checked {
+  background-color: var(--frin-color-primary);
+  border-color: var(--frin-color-primary);
+}
+.frin-check input[type="checkbox"]:checked::before,
+.frin-radio input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.frin-check input:focus-visible,
+.frin-radio input:focus-visible {
+  outline: 3px solid var(--frin-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.frin-check input:disabled,
+.frin-radio input:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* ==========================================================================
+   Frin CSS â€” Card
+   .frin-card  .frin-card__header|body|footer  .frin-card__title|subtitle
+   Modifiers: .frin-card--raised  .frin-card--flush
+   ========================================================================== */
+
+.frin-card {
+  background-color: var(--frin-color-surface);
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.frin-card--raised { box-shadow: var(--frin-shadow-md); }
+
+.frin-card__header {
+  padding: var(--frin-space-4) var(--frin-space-5);
+  border-bottom: 1px solid var(--frin-color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--frin-space-3);
+}
+
+.frin-card__body { padding: var(--frin-space-5); flex: 1 1 auto; }
+
+.frin-card__footer {
+  padding: var(--frin-space-4) var(--frin-space-5);
+  border-top: 1px solid var(--frin-color-border);
+  background-color: var(--frin-color-bg-subtle);
+}
+
+.frin-card__title { font-size: var(--frin-font-size-lg); margin-bottom: var(--frin-space-1); }
+.frin-card__subtitle { color: var(--frin-color-text-muted); font-size: var(--frin-font-size-sm); }
+
+.frin-card--flush .frin-card__body,
+.frin-card--flush .frin-card__header,
+.frin-card--flush .frin-card__footer { padding: 0; }
+
+.frin-card__media { width: 100%; height: auto; display: block; }
+
+/* ==========================================================================
+   Frin CSS â€” Navbar
+   .frin-navbar  .frin-navbar__brand  .frin-navbar__nav  .frin-navbar__link
+                .frin-navbar__toggle (mobile)  .frin-navbar--sticky
+   ========================================================================== */
+
+.frin-navbar {
+  display: flex;
+  align-items: center;
+  gap: var(--frin-space-4);
+  padding: var(--frin-space-3) var(--frin-space-4);
+  background-color: var(--frin-color-surface);
+  border-bottom: 1px solid var(--frin-color-border);
+}
+
+.frin-navbar--sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--frin-z-sticky);
+  backdrop-filter: saturate(180%) blur(8px);
+  background-color: color-mix(in srgb, var(--frin-color-surface) 85%, transparent);
+}
+
+.frin-navbar__brand {
+  font-size: var(--frin-font-size-lg);
+  font-weight: var(--frin-font-weight-bold);
+  color: var(--frin-color-text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--frin-space-2);
+}
+.frin-navbar__brand:hover { text-decoration: none; color: var(--frin-color-primary); }
+
+.frin-navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--frin-space-2);
+  margin-left: auto;
+  list-style: none;
+  padding: 0;
+}
+
+.frin-navbar__link {
+  display: inline-block;
+  padding: var(--frin-space-2) var(--frin-space-3);
+  border-radius: var(--frin-radius-md);
+  color: var(--frin-color-text-muted);
+  text-decoration: none;
+  font-weight: var(--frin-font-weight-medium);
+}
+.frin-navbar__link:hover { background-color: var(--frin-color-bg-subtle); color: var(--frin-color-text); text-decoration: none; }
+.frin-navbar__link.is-active { color: var(--frin-color-primary); background-color: var(--frin-color-primary-soft); }
+
+.frin-navbar__toggle {
+  display: none;
+  margin-left: auto;
+  padding: var(--frin-space-2);
+  border-radius: var(--frin-radius-md);
+  color: var(--frin-color-text);
+}
+.frin-navbar__toggle:hover { background-color: var(--frin-color-bg-subtle); }
+
+@media (max-width: 768px) {
+  .frin-navbar__toggle { display: inline-flex; }
+  .frin-navbar__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--frin-space-2);
+    background-color: var(--frin-color-surface);
+    border-bottom: 1px solid var(--frin-color-border);
+    box-shadow: var(--frin-shadow-md);
+  }
+  .frin-navbar__nav.is-open { display: flex; }
+  .frin-navbar { position: relative; flex-wrap: wrap; }
+  .frin-navbar__nav .frin-navbar__link { padding: var(--frin-space-3); }
+}
+
+/* ==========================================================================
+   Frin CSS â€” Alerts & Badges
+   Alert:  .frin-alert  .frin-alert--info|success|warning|danger
+   Badge:  .frin-badge  .frin-badge--primary|secondary|success|warning|danger|info
+   ========================================================================== */
+
+.frin-alert {
+  display: flex;
+  gap: var(--frin-space-3);
+  align-items: flex-start;
+  padding: var(--frin-space-3) var(--frin-space-4);
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-md);
+  background-color: var(--frin-color-bg-subtle);
+  color: var(--frin-color-text);
+}
+
+.frin-alert__icon { flex: 0 0 auto; line-height: 1.4; }
+.frin-alert__body { flex: 1 1 auto; }
+.frin-alert__title { font-weight: var(--frin-font-weight-bold); margin-bottom: 2px; }
+.frin-alert__close {
+  margin-left: auto;
+  color: inherit;
+  opacity: 0.6;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.frin-alert__close:hover { opacity: 1; }
+
+.frin-alert--info {
+  background-color: var(--frin-color-info-soft);
+  border-color: color-mix(in srgb, var(--frin-color-info) 40%, transparent);
+}
+.frin-alert--success {
+  background-color: var(--frin-color-success-soft);
+  border-color: color-mix(in srgb, var(--frin-color-success) 40%, transparent);
+}
+.frin-alert--warning {
+  background-color: var(--frin-color-warning-soft);
+  border-color: color-mix(in srgb, var(--frin-color-warning) 40%, transparent);
+}
+.frin-alert--danger {
+  background-color: var(--frin-color-danger-soft);
+  border-color: color-mix(in srgb, var(--frin-color-danger) 40%, transparent);
+}
+
+/* Badges / Tags */
+.frin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.55rem;
+  font-size: var(--frin-font-size-xs);
+  font-weight: var(--frin-font-weight-bold);
+  line-height: 1.4;
+  border-radius: var(--frin-radius-pill);
+  background-color: var(--frin-color-bg-subtle);
+  color: var(--frin-color-text-muted);
+}
+
+.frin-badge--primary { background-color: var(--frin-color-primary); color: var(--frin-color-on-primary); }
+.frin-badge--secondary { background-color: var(--frin-color-secondary); color: var(--frin-color-on-secondary); }
+.frin-badge--success { background-color: var(--frin-color-success); color: #fff; }
+.frin-badge--warning { background-color: var(--frin-color-warning); color: #1a1300; }
+.frin-badge--danger { background-color: var(--frin-color-danger); color: #fff; }
+.frin-badge--info { background-color: var(--frin-color-info); color: #fff; }
+
+.frin-badge--soft {
+  background-color: var(--frin-color-bg-subtle);
+}
+.frin-badge--soft.frin-badge--primary { background-color: var(--frin-color-primary-soft); color: var(--frin-color-primary); }
+.frin-badge--soft.frin-badge--success { background-color: var(--frin-color-success-soft); color: var(--frin-color-success); }
+.frin-badge--soft.frin-badge--warning { background-color: var(--frin-color-warning-soft); color: var(--frin-color-warning); }
+.frin-badge--soft.frin-badge--danger { background-color: var(--frin-color-danger-soft); color: var(--frin-color-danger); }
+.frin-badge--soft.frin-badge--info { background-color: var(--frin-color-info-soft); color: var(--frin-color-info); }
+
+/* ==========================================================================
+   Frin CSS â€” Modal
+   Structure: .frin-modal (backdrop) > .frin-modal__dialog
+              .frin-modal__header|body|footer  .frin-modal__close
+   Toggle visibility with .is-open (or [hidden]).
+   ========================================================================== */
+
+.frin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--frin-z-modal-backdrop);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--frin-space-4);
+  background-color: rgba(11, 31, 58, 0.5);
+}
+.frin-modal.is-open { display: flex; }
+
+.frin-modal__dialog {
+  width: 100%;
+  max-width: 32rem;
+  background-color: var(--frin-color-surface);
+  border-radius: var(--frin-radius-lg);
+  box-shadow: var(--frin-shadow-lg);
+  overflow: hidden;
+  animation: frin-modal-in 180ms ease;
+}
+@keyframes frin-modal-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.frin-modal__header,
+.frin-modal__footer {
+  padding: var(--frin-space-4) var(--frin-space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--frin-space-3);
+}
+.frin-modal__header { border-bottom: 1px solid var(--frin-color-border); }
+.frin-modal__footer { border-top: 1px solid var(--frin-color-border); justify-content: flex-end; gap: var(--frin-space-2); }
+.frin-modal__title { font-size: var(--frin-font-size-lg); }
+.frin-modal__body { padding: var(--frin-space-5); }
+.frin-modal__close {
+  margin-left: auto;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--frin-color-text-muted);
+  padding: var(--frin-space-1) var(--frin-space-2);
+  border-radius: var(--frin-radius-sm);
+}
+.frin-modal__close:hover { background-color: var(--frin-color-bg-subtle); color: var(--frin-color-text); }
+
+@media (prefers-reduced-motion: reduce) {
+  .frin-modal__dialog { animation: none; }
+}
+
+/* ==========================================================================
+   Frin CSS â€” Dropdown
+   .frin-dropdown (wrapper)  .frin-dropdown__toggle  .frin-dropdown__menu
+   .frin-dropdown__item      .frin-dropdown__divider
+   Open state: .frin-dropdown.is-open  (toggled via JS or :focus-within)
+   ========================================================================== */
+
+.frin-dropdown { position: relative; display: inline-block; }
+
+.frin-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: var(--frin-z-dropdown);
+  min-width: 12rem;
+  padding: var(--frin-space-1);
+  background-color: var(--frin-color-surface-raised);
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-md);
+  box-shadow: var(--frin-shadow-md);
+  display: none;
+}
+.frin-dropdown.is-open .frin-dropdown__menu,
+.frin-dropdown:focus-within .frin-dropdown__menu { display: block; }
+
+.frin-dropdown__item {
+  display: block;
+  width: 100%;
+  padding: var(--frin-space-2) var(--frin-space-3);
+  border-radius: var(--frin-radius-sm);
+  color: var(--frin-color-text);
+  text-decoration: none;
+  font-size: var(--frin-font-size-sm);
+  text-align: left;
+}
+.frin-dropdown__item:hover,
+.frin-dropdown__item:focus-visible {
+  background-color: var(--frin-color-bg-subtle);
+  text-decoration: none;
+  color: var(--frin-color-text);
+}
+.frin-dropdown__item.is-active { color: var(--frin-color-primary); font-weight: var(--frin-font-weight-medium); }
+
+.frin-dropdown__divider {
+  height: 0;
+  margin: var(--frin-space-1) 0;
+  border-top: 1px solid var(--frin-color-border);
+}
+
+/* ==========================================================================
+   Frin CSS â€” Tabs
+   .frin-tabs  .frin-tabs__list  .frin-tabs__tab  .frin-tabs__panel
+   Active tab: .frin-tabs__tab.is-active
+   (panel switching handled by JS; panels hidden unless .is-active)
+   ========================================================================== */
+
+.frin-tabs__list {
+  display: flex;
+  gap: var(--frin-space-1);
+  border-bottom: 1px solid var(--frin-color-border);
+  overflow-x: auto;
+}
+
+.frin-tabs__tab {
+  padding: var(--frin-space-3) var(--frin-space-4);
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--frin-color-text-muted);
+  font-weight: var(--frin-font-weight-medium);
+  white-space: nowrap;
+  transition: color var(--frin-transition), border-color var(--frin-transition);
+}
+.frin-tabs__tab:hover { color: var(--frin-color-text); }
+.frin-tabs__tab.is-active {
+  color: var(--frin-color-primary);
+  border-bottom-color: var(--frin-color-primary);
+}
+
+.frin-tabs__panel { padding: var(--frin-space-5) 0; display: none; }
+.frin-tabs__panel.is-active { display: block; }
+.frin-tabs__panel[hidden] { display: none; }
+
+/* ==========================================================================
+   Frin CSS â€” Tooltip
+   Wrap a trigger in .frin-tooltip and add .frin-tooltip__bubble as child.
+   Show on hover/focus via .frin-tooltip:hover / :focus-within. Use data-side.
+   ========================================================================== */
+
+.frin-tooltip {
+  position: relative;
+  display: inline-flex;
+  border-bottom: 1px dotted var(--frin-color-text-muted);
+}
+
+.frin-tooltip__bubble {
+  position: absolute;
+  z-index: var(--frin-z-tooltip);
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--frin-space-1) var(--frin-space-2);
+  background-color: var(--frin-color-secondary);
+  color: var(--frin-color-on-secondary);
+  font-size: var(--frin-font-size-xs);
+  font-weight: var(--frin-font-weight-medium);
+  border-radius: var(--frin-radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--frin-transition);
+}
+
+.frin-tooltip__bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--frin-color-secondary);
+}
+
+.frin-tooltip:hover .frin-tooltip__bubble,
+.frin-tooltip:focus-within .frin-tooltip__bubble {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Side variants */
+.frin-tooltip[data-side="right"] .frin-tooltip__bubble {
+  bottom: auto; top: 50%; left: calc(100% + 8px);
+  transform: translateY(-50%);
+}
+.frin-tooltip[data-side="right"] .frin-tooltip__bubble::after {
+  top: 50%; left: auto; right: 100%;
+  transform: translateY(-50%);
+  border-top-color: transparent; border-right-color: var(--frin-color-secondary);
+}
+.frin-tooltip[data-side="bottom"] .frin-tooltip__bubble {
+  bottom: auto; top: calc(100% + 8px);
+}
+.frin-tooltip[data-side="bottom"] .frin-tooltip__bubble::after {
+  top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: var(--frin-color-secondary);
+}
+.frin-tooltip[data-side="left"] .frin-tooltip__bubble {
+  bottom: auto; top: 50%; left: auto; right: calc(100% + 8px);
+  transform: translateY(-50%);
+}
+.frin-tooltip[data-side="left"] .frin-tooltip__bubble::after {
+  top: 50%; left: 100%; transform: translateY(-50%);
+  border-top-color: transparent; border-left-color: var(--frin-color-secondary);
+}
+
+/* ==========================================================================
+   Frin CSS â€” Pagination
+   .frin-pagination  .frin-pagination__item  .frin-pagination__link
+   Current page: .frin-pagination__link.is-active
+   ========================================================================== */
+
+.frin-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--frin-space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.frin-pagination__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 var(--frin-space-2);
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-md);
+  color: var(--frin-color-text);
+  background-color: var(--frin-color-surface);
+  text-decoration: none;
+  font-size: var(--frin-font-size-sm);
+  transition: background-color var(--frin-transition), border-color var(--frin-transition);
+}
+.frin-pagination__link:hover { background-color: var(--frin-color-bg-subtle); text-decoration: none; }
+
+.frin-pagination__link.is-active {
+  background-color: var(--frin-color-primary);
+  border-color: var(--frin-color-primary);
+  color: var(--frin-color-on-primary);
+  font-weight: var(--frin-font-weight-medium);
+}
+
+.frin-pagination__link[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Frin CSS â€” Table
+   .frin-table  (use with <table class="frin-table">)
+   Modifiers: .frin-table--striped  .frin-table--bordered  .frin-table--hover
+              .frin-table--sm
+   ========================================================================== */
+
+.frin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--frin-font-size-sm);
+  color: var(--frin-color-text);
+}
+
+.frin-table th,
+.frin-table td {
+  padding: var(--frin-space-3) var(--frin-space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--frin-color-border);
+}
+
+.frin-table thead th {
+  font-weight: var(--frin-font-weight-bold);
+  color: var(--frin-color-text-muted);
+  background-color: var(--frin-color-bg-subtle);
+  white-space: nowrap;
+}
+
+.frin-table tbody tr { transition: background-color var(--frin-transition); }
+.frin-table--hover tbody tr:hover { background-color: var(--frin-color-bg-subtle); }
+
+.frin-table--striped tbody tr:nth-child(even) { background-color: var(--frin-color-bg-subtle); }
+
+.frin-table--bordered th,
+.frin-table--bordered td { border: 1px solid var(--frin-color-border); }
+
+.frin-table--sm th,
+.frin-table--sm td { padding: var(--frin-space-2) var(--frin-space-3); }
+
+.frin-table caption {
+  caption-side: bottom;
+  padding-top: var(--frin-space-3);
+  color: var(--frin-color-text-muted);
+  font-size: var(--frin-font-size-xs);
+}
+
+.frin-table-wrapper { overflow-x: auto; }
+
+

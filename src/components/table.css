@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Frin CSS — Table
+   .frin-table  (use with <table class="frin-table">)
+   Modifiers: .frin-table--striped  .frin-table--bordered  .frin-table--hover
+              .frin-table--sm
+   ========================================================================== */
+
+.frin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--frin-font-size-sm);
+  color: var(--frin-color-text);
+}
+
+.frin-table th,
+.frin-table td {
+  padding: var(--frin-space-3) var(--frin-space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--frin-color-border);
+}
+
+.frin-table thead th {
+  font-weight: var(--frin-font-weight-bold);
+  color: var(--frin-color-text-muted);
+  background-color: var(--frin-color-bg-subtle);
+  white-space: nowrap;
+}
+
+.frin-table tbody tr { transition: background-color var(--frin-transition); }
+.frin-table--hover tbody tr:hover { background-color: var(--frin-color-bg-subtle); }
+
+.frin-table--striped tbody tr:nth-child(even) { background-color: var(--frin-color-bg-subtle); }
+
+.frin-table--bordered th,
+.frin-table--bordered td { border: 1px solid var(--frin-color-border); }
+
+.frin-table--sm th,
+.frin-table--sm td { padding: var(--frin-space-2) var(--frin-space-3); }
+
+.frin-table caption {
+  caption-side: bottom;
+  padding-top: var(--frin-space-3);
+  color: var(--frin-color-text-muted);
+  font-size: var(--frin-font-size-xs);
+}
+
+.frin-table-wrapper { overflow-x: auto; }
