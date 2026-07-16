@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Frin CSS — Breadcrumbs
+   .frin-breadcrumb > .frin-breadcrumb__item (last has [aria-current="page"])
+   ========================================================================== */
+
+.frin-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--frin-space-1) var(--frin-space-2);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: var(--frin-font-size-sm);
+  color: var(--frin-color-text-muted);
+}
+.frin-breadcrumb__item + .frin-breadcrumb__item::before {
+  content: "/";
+  margin-right: var(--frin-space-2);
+  color: var(--frin-color-border-strong);
+}
+.frin-breadcrumb__item a { color: var(--frin-color-text-muted); }
+.frin-breadcrumb__item a:hover { color: var(--frin-color-primary); }
+.frin-breadcrumb__item[aria-current="page"] { color: var(--frin-color-text); font-weight: var(--frin-font-weight-medium); }
+
+/* ==========================================================================
+   Frin CSS — Progress
+   .frin-progress (track) > .frin-progress__bar (width via inline style)
+   Modifiers: --sm | --lg  , color via .frin-progress__bar--success etc.
+   ========================================================================== */
+
+.frin-progress {
+  display: block;
+  width: 100%;
+  height: 0.625rem;
+  background-color: var(--frin-color-bg-subtle);
+  border-radius: var(--frin-radius-pill);
+  overflow: hidden;
+}
+.frin-progress--sm { height: 0.375rem; }
+.frin-progress--lg { height: 1rem; }
+
+.frin-progress__bar {
+  display: block;
+  height: 100%;
+  width: 0;
+  background-color: var(--frin-color-primary);
+  border-radius: inherit;
+  transition: width 400ms ease;
+}
+.frin-progress__bar--success { background-color: var(--frin-color-success); }
+.frin-progress__bar--warning { background-color: var(--frin-color-warning); }
+.frin-progress__bar--danger  { background-color: var(--frin-color-danger); }
+.frin-progress__bar--secondary { background-color: var(--frin-color-secondary); }
+
+/* ==========================================================================
+   Frin CSS — Spinner (loading)
+   .frin-spinner (sizes via --sm|--lg, colors via --primary etc.)
+   ========================================================================== */
+
+.frin-spinner {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.2em solid var(--frin-color-primary-soft);
+  border-top-color: var(--frin-color-primary);
+  border-radius: var(--frin-radius-circle);
+  animation: frin-spin 700ms linear infinite;
+  vertical-align: middle;
+}
+.frin-spinner--sm { width: 1rem; height: 1rem; border-width: 0.15em; }
+.frin-spinner--lg { width: 2.5rem; height: 2.5rem; border-width: 0.25em; }
+.frin-spinner--secondary { border-color: var(--frin-color-secondary-soft); border-top-color: var(--frin-color-secondary); }
+.frin-spinner--light { border-color: rgba(255,255,255,0.35); border-top-color: #fff; }
+
+@keyframes frin-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .frin-spinner { animation-duration: 1.5s; }
+}
+
+/* ==========================================================================
+   Frin CSS — Avatar
+   .frin-avatar  .frin-avatar--sm|lg  .frin-avatar--rounded
+   Use <img> inside or text initials.
+   ========================================================================== */
+
+.frin-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--frin-radius-md);
+  background-color: var(--frin-color-primary-soft);
+  color: var(--frin-color-primary);
+  font-weight: var(--frin-font-weight-bold);
+  font-size: var(--frin-font-size-sm);
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.frin-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.frin-avatar--rounded { border-radius: var(--frin-radius-circle); }
+.frin-avatar--sm { width: 1.75rem; height: 1.75rem; font-size: var(--frin-font-size-xs); }
+.frin-avatar--lg { width: 3.5rem; height: 3.5rem; font-size: var(--frin-font-size-base); }

@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Frin CSS — Accordion
+   .frin-accordion > .frin-accordion__item > __header + __panel
+   Open state: .frin-accordion__item.is-open  (toggled via JS)
+   ========================================================================== */
+
+.frin-accordion {
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-lg);
+  overflow: hidden;
+}
+.frin-accordion__item + .frin-accordion__item { border-top: 1px solid var(--frin-color-border); }
+
+.frin-accordion__header {
+  margin: 0;
+}
+.frin-accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--frin-space-3);
+  padding: var(--frin-space-4) var(--frin-space-5);
+  background: none;
+  border: 0;
+  font-size: var(--frin-font-size-base);
+  font-weight: var(--frin-font-weight-medium);
+  color: var(--frin-color-text);
+  text-align: left;
+  cursor: pointer;
+}
+.frin-accordion__trigger:hover { background-color: var(--frin-color-bg-subtle); }
+.frin-accordion__trigger .frin-accordion__icon {
+  transition: transform var(--frin-transition);
+  color: var(--frin-color-primary);
+}
+.frin-accordion__item.is-open .frin-accordion__icon { transform: rotate(180deg); }
+
+.frin-accordion__panel {
+  padding: 0 var(--frin-space-5) var(--frin-space-5);
+  color: var(--frin-color-text-muted);
+}
+
+/* ==========================================================================
+   Frin CSS — List group
+   .frin-list  .frin-list__item  (links use <a class="frin-list__item">)
+   ========================================================================== */
+
+.frin-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-lg);
+  overflow: hidden;
+  background-color: var(--frin-color-surface);
+}
+.frin-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--frin-space-3);
+  padding: var(--frin-space-3) var(--frin-space-4);
+  border-bottom: 1px solid var(--frin-color-border);
+  color: var(--frin-color-text);
+  text-decoration: none;
+}
+.frin-list__item:last-child { border-bottom: 0; }
+a.frin-list__item:hover { background-color: var(--frin-color-bg-subtle); text-decoration: none; }
+.frin-list__item.is-active { background-color: var(--frin-color-primary-soft); color: var(--frin-color-primary); font-weight: var(--frin-font-weight-medium); }
+.frin-list__item--disabled { opacity: 0.5; pointer-events: none; }
+.frin-list__item--muted { color: var(--frin-color-text-muted); }
+
+/* ==========================================================================
+   Frin CSS — Toast
+   .frin-toast-container (fixed) > .frin-toast
+   Variants: --success | --warning | --danger | --info  (state classes)
+   ========================================================================== */
+
+.frin-toast-container {
+  position: fixed;
+  z-index: var(--frin-z-tooltip);
+  bottom: var(--frin-space-5);
+  right: var(--frin-space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--frin-space-2);
+  max-width: min(92vw, 22rem);
+}
+.frin-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--frin-space-3);
+  padding: var(--frin-space-3) var(--frin-space-4);
+  background-color: var(--frin-color-surface-raised);
+  border: 1px solid var(--frin-color-border);
+  border-left: 4px solid var(--frin-color-primary);
+  border-radius: var(--frin-radius-md);
+  box-shadow: var(--frin-shadow-md);
+  animation: frin-toast-in 200ms ease;
+}
+.frin-toast--success { border-left-color: var(--frin-color-success); }
+.frin-toast--warning { border-left-color: var(--frin-color-warning); }
+.frin-toast--danger  { border-left-color: var(--frin-color-danger); }
+.frin-toast--info    { border-left-color: var(--frin-color-info); }
+.frin-toast__body { flex: 1 1 auto; font-size: var(--frin-font-size-sm); }
+.frin-toast__title { font-weight: var(--frin-font-weight-bold); display: block; margin-bottom: 2px; }
+.frin-toast__close { color: var(--frin-color-text-muted); font-size: 1.1rem; line-height: 1; }
+.frin-toast.is-leaving { animation: frin-toast-out 180ms ease forwards; }
+
+@keyframes frin-toast-in { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
+@keyframes frin-toast-out { to { opacity: 0; transform: translateX(16px); } }

@@ -11,7 +11,7 @@ your own styles.
 - 🌗 **Light / dark** — built-in dark theme via `data-theme="dark"`
 - ♿ **Accessible** — visible focus rings, ARIA-friendly markup, reduced-motion support
 - 📱 **Mobile-first** — responsive grid & components by default
-- 🪶 **Small** — ~25 KB minified, zero dependencies, zero JavaScript required*
+- 🪶 **Small** — ~34 KB minified, zero dependencies, zero JavaScript required*
 
 \*JavaScript is only needed for progressive enhancement (modals, dropdowns, tabs,
 navbar toggle). Components render fine without it.
@@ -98,16 +98,28 @@ All classes use the `frin-` prefix. Variant modifiers use BEM-style double dashe
 | Modal       | `frin-modal`                    | `__dialog` `__header` `__body` `__footer` `__title` `__close`; `is-open` (open via `data-frin-open-modal="#id"`) |
 | Dropdown    | `frin-dropdown`                 | `__toggle` `__menu` `__item` `__divider`; `is-open`, `is-active`       |
 | Tabs        | `frin-tabs`                     | `__list` `__tab` `__panel`; `is-active`                                |
-| Tooltip     | `frin-tooltip`                  | `__bubble`; `data-side="top|right|bottom|left"`                        |
+| Tooltip     | `frin-tooltip`                  | `__bubble`; `data-side="top\|right\|bottom\|left"`                     |
 | Pagination  | `frin-pagination`               | `__item` `__link`; `is-active`, `[aria-disabled]`                      |
 | Table       | `frin-table`                    | `--striped`, `--bordered`, `--hover`, `--sm`; wrap with `frin-table-wrapper` |
+| Breadcrumbs | `frin-breadcrumb`               | `__item` (last: `aria-current="page"`)                                 |
+| Progress    | `frin-progress`                 | `--sm`, `--lg`; `__bar` `--success/--warning/--danger/--secondary`     |
+| Spinner     | `frin-spinner`                  | `--sm`, `--lg`, `--secondary`, `--light`; `role="status"`              |
+| Accordion   | `frin-accordion`                | `__item` `__header` `__trigger` `__icon` `__panel`; `is-open`, `data-single` |
+| Avatar      | `frin-avatar`                   | `--sm`, `--lg`, `--rounded`; `<img>` or text initials                 |
+| List group  | `frin-list`                     | `__item`, `__item--active/--disabled/--muted`                          |
+| Toast       | `frin-toast`                    | `--success/--warning/--danger/--info`; `__title` `__body` `__close` (via `Frin.showToast()`) |
 
 ### Utility helpers
 
-`frin-d-flex`, `frin-d-block`, `frin-d-grid`, `frin-flex-col`, `frin-items-center`,
-`frin-justify-between`, `frin-justify-center`, `frin-gap-2/4/5`,
-`frin-text-center`, `frin-text-muted`, `frin-mt-4/5`, `frin-mb-4/5`,
-`frin-sr-only`.
+Display: `frin-d-none/inline/inline-block/flex/grid/block`.
+Flex: `frin-flex-row/col/wrap/nowrap`, `frin-items-*`, `frin-justify-*`,
+`frin-flex-1/auto/none`, `frin-gap-1…6`.
+Spacing: `frin-mt-0…6`, `frin-mb-0…6`, `frin-mx-auto`, `frin-p-3/4/5`.
+Text: `frin-text-left/center/right`, `frin-text-muted/primary`, `frin-text-sm/lg/bold`,
+`frin-text-nowrap`, `frin-text-truncate`.
+Misc: `frin-bg-subtle/surface/primary`, `frin-rounded-*`, `frin-shadow-*`,
+`frin-w-full/auto`, `frin-max-w-prose`, `frin-hidden-mobile/desktop`,
+`frin-stack`, `frin-divider`, `frin-sr-only`.
 
 ---
 

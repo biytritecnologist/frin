@@ -1,4 +1,4 @@
-﻿/* Frin CSS v1.0.0 | MIT License | https://github.com/biytritecnologist/frin */
+﻿/* Frin CSS v1.1.0 | MIT License | https://github.com/biytritecnologist/frin */
 /* ==========================================================================
    Frin CSS â€” Design Tokens
    --------------------------------------------------------------------------
@@ -1084,5 +1084,332 @@ hr {
 }
 
 .frin-table-wrapper { overflow-x: auto; }
+
+/* ==========================================================================
+   Frin CSS â€” Breadcrumbs
+   .frin-breadcrumb > .frin-breadcrumb__item (last has [aria-current="page"])
+   ========================================================================== */
+
+.frin-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--frin-space-1) var(--frin-space-2);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: var(--frin-font-size-sm);
+  color: var(--frin-color-text-muted);
+}
+.frin-breadcrumb__item + .frin-breadcrumb__item::before {
+  content: "/";
+  margin-right: var(--frin-space-2);
+  color: var(--frin-color-border-strong);
+}
+.frin-breadcrumb__item a { color: var(--frin-color-text-muted); }
+.frin-breadcrumb__item a:hover { color: var(--frin-color-primary); }
+.frin-breadcrumb__item[aria-current="page"] { color: var(--frin-color-text); font-weight: var(--frin-font-weight-medium); }
+
+/* ==========================================================================
+   Frin CSS â€” Progress
+   .frin-progress (track) > .frin-progress__bar (width via inline style)
+   Modifiers: --sm | --lg  , color via .frin-progress__bar--success etc.
+   ========================================================================== */
+
+.frin-progress {
+  display: block;
+  width: 100%;
+  height: 0.625rem;
+  background-color: var(--frin-color-bg-subtle);
+  border-radius: var(--frin-radius-pill);
+  overflow: hidden;
+}
+.frin-progress--sm { height: 0.375rem; }
+.frin-progress--lg { height: 1rem; }
+
+.frin-progress__bar {
+  display: block;
+  height: 100%;
+  width: 0;
+  background-color: var(--frin-color-primary);
+  border-radius: inherit;
+  transition: width 400ms ease;
+}
+.frin-progress__bar--success { background-color: var(--frin-color-success); }
+.frin-progress__bar--warning { background-color: var(--frin-color-warning); }
+.frin-progress__bar--danger  { background-color: var(--frin-color-danger); }
+.frin-progress__bar--secondary { background-color: var(--frin-color-secondary); }
+
+/* ==========================================================================
+   Frin CSS â€” Spinner (loading)
+   .frin-spinner (sizes via --sm|--lg, colors via --primary etc.)
+   ========================================================================== */
+
+.frin-spinner {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.2em solid var(--frin-color-primary-soft);
+  border-top-color: var(--frin-color-primary);
+  border-radius: var(--frin-radius-circle);
+  animation: frin-spin 700ms linear infinite;
+  vertical-align: middle;
+}
+.frin-spinner--sm { width: 1rem; height: 1rem; border-width: 0.15em; }
+.frin-spinner--lg { width: 2.5rem; height: 2.5rem; border-width: 0.25em; }
+.frin-spinner--secondary { border-color: var(--frin-color-secondary-soft); border-top-color: var(--frin-color-secondary); }
+.frin-spinner--light { border-color: rgba(255,255,255,0.35); border-top-color: #fff; }
+
+@keyframes frin-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .frin-spinner { animation-duration: 1.5s; }
+}
+
+/* ==========================================================================
+   Frin CSS â€” Avatar
+   .frin-avatar  .frin-avatar--sm|lg  .frin-avatar--rounded
+   Use <img> inside or text initials.
+   ========================================================================== */
+
+.frin-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--frin-radius-md);
+  background-color: var(--frin-color-primary-soft);
+  color: var(--frin-color-primary);
+  font-weight: var(--frin-font-weight-bold);
+  font-size: var(--frin-font-size-sm);
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.frin-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.frin-avatar--rounded { border-radius: var(--frin-radius-circle); }
+.frin-avatar--sm { width: 1.75rem; height: 1.75rem; font-size: var(--frin-font-size-xs); }
+.frin-avatar--lg { width: 3.5rem; height: 3.5rem; font-size: var(--frin-font-size-base); }
+
+/* ==========================================================================
+   Frin CSS â€” Accordion
+   .frin-accordion > .frin-accordion__item > __header + __panel
+   Open state: .frin-accordion__item.is-open  (toggled via JS)
+   ========================================================================== */
+
+.frin-accordion {
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-lg);
+  overflow: hidden;
+}
+.frin-accordion__item + .frin-accordion__item { border-top: 1px solid var(--frin-color-border); }
+
+.frin-accordion__header {
+  margin: 0;
+}
+.frin-accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--frin-space-3);
+  padding: var(--frin-space-4) var(--frin-space-5);
+  background: none;
+  border: 0;
+  font-size: var(--frin-font-size-base);
+  font-weight: var(--frin-font-weight-medium);
+  color: var(--frin-color-text);
+  text-align: left;
+  cursor: pointer;
+}
+.frin-accordion__trigger:hover { background-color: var(--frin-color-bg-subtle); }
+.frin-accordion__trigger .frin-accordion__icon {
+  transition: transform var(--frin-transition);
+  color: var(--frin-color-primary);
+}
+.frin-accordion__item.is-open .frin-accordion__icon { transform: rotate(180deg); }
+
+.frin-accordion__panel {
+  padding: 0 var(--frin-space-5) var(--frin-space-5);
+  color: var(--frin-color-text-muted);
+}
+
+/* ==========================================================================
+   Frin CSS â€” List group
+   .frin-list  .frin-list__item  (links use <a class="frin-list__item">)
+   ========================================================================== */
+
+.frin-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 1px solid var(--frin-color-border);
+  border-radius: var(--frin-radius-lg);
+  overflow: hidden;
+  background-color: var(--frin-color-surface);
+}
+.frin-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--frin-space-3);
+  padding: var(--frin-space-3) var(--frin-space-4);
+  border-bottom: 1px solid var(--frin-color-border);
+  color: var(--frin-color-text);
+  text-decoration: none;
+}
+.frin-list__item:last-child { border-bottom: 0; }
+a.frin-list__item:hover { background-color: var(--frin-color-bg-subtle); text-decoration: none; }
+.frin-list__item.is-active { background-color: var(--frin-color-primary-soft); color: var(--frin-color-primary); font-weight: var(--frin-font-weight-medium); }
+.frin-list__item--disabled { opacity: 0.5; pointer-events: none; }
+.frin-list__item--muted { color: var(--frin-color-text-muted); }
+
+/* ==========================================================================
+   Frin CSS â€” Toast
+   .frin-toast-container (fixed) > .frin-toast
+   Variants: --success | --warning | --danger | --info  (state classes)
+   ========================================================================== */
+
+.frin-toast-container {
+  position: fixed;
+  z-index: var(--frin-z-tooltip);
+  bottom: var(--frin-space-5);
+  right: var(--frin-space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--frin-space-2);
+  max-width: min(92vw, 22rem);
+}
+.frin-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--frin-space-3);
+  padding: var(--frin-space-3) var(--frin-space-4);
+  background-color: var(--frin-color-surface-raised);
+  border: 1px solid var(--frin-color-border);
+  border-left: 4px solid var(--frin-color-primary);
+  border-radius: var(--frin-radius-md);
+  box-shadow: var(--frin-shadow-md);
+  animation: frin-toast-in 200ms ease;
+}
+.frin-toast--success { border-left-color: var(--frin-color-success); }
+.frin-toast--warning { border-left-color: var(--frin-color-warning); }
+.frin-toast--danger  { border-left-color: var(--frin-color-danger); }
+.frin-toast--info    { border-left-color: var(--frin-color-info); }
+.frin-toast__body { flex: 1 1 auto; font-size: var(--frin-font-size-sm); }
+.frin-toast__title { font-weight: var(--frin-font-weight-bold); display: block; margin-bottom: 2px; }
+.frin-toast__close { color: var(--frin-color-text-muted); font-size: 1.1rem; line-height: 1; }
+.frin-toast.is-leaving { animation: frin-toast-out 180ms ease forwards; }
+
+@keyframes frin-toast-in { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
+@keyframes frin-toast-out { to { opacity: 0; transform: translateX(16px); } }
+
+/* ==========================================================================
+   Frin CSS â€” Utilities
+   A small, purposeful set of helpers (no unused utility soup).
+   All prefixed frin- to avoid collisions.
+   ========================================================================== */
+
+/* Display */
+.frin-d-none   { display: none !important; }
+.frin-d-inline { display: inline !important; }
+.frin-d-inline-block { display: inline-block !important; }
+.frin-d-flex   { display: flex !important; }
+.frin-d-grid   { display: grid !important; }
+.frin-d-block  { display: block !important; }
+
+/* Flex direction */
+.frin-flex-row    { flex-direction: row !important; }
+.frin-flex-col    { flex-direction: column !important; }
+.frin-flex-wrap   { flex-wrap: wrap !important; }
+.frin-flex-nowrap { flex-wrap: nowrap !important; }
+
+/* Alignment */
+.frin-items-start    { align-items: flex-start !important; }
+.frin-items-center  { align-items: center !important; }
+.frin-items-end     { align-items: flex-end !important; }
+.frin-items-stretch { align-items: stretch !important; }
+.frin-justify-start   { justify-content: flex-start !important; }
+.frin-justify-center  { justify-content: center !important; }
+.frin-justify-between { justify-content: space-between !important; }
+.frin-justify-end     { justify-content: flex-end !important; }
+.frin-flex-1 { flex: 1 1 0% !important; }
+.frin-flex-auto { flex: 1 1 auto !important; }
+.frin-flex-none { flex: none !important; }
+
+/* Gap */
+.frin-gap-1 { gap: var(--frin-space-1) !important; }
+.frin-gap-2 { gap: var(--frin-space-2) !important; }
+.frin-gap-3 { gap: var(--frin-space-3) !important; }
+.frin-gap-4 { gap: var(--frin-space-4) !important; }
+.frin-gap-5 { gap: var(--frin-space-5) !important; }
+.frin-gap-6 { gap: var(--frin-space-6) !important; }
+
+/* Margin (top) */
+.frin-mt-0 { margin-top: 0 !important; }
+.frin-mt-2 { margin-top: var(--frin-space-2) !important; }
+.frin-mt-3 { margin-top: var(--frin-space-3) !important; }
+.frin-mt-4 { margin-top: var(--frin-space-4) !important; }
+.frin-mt-5 { margin-top: var(--frin-space-5) !important; }
+.frin-mt-6 { margin-top: var(--frin-space-6) !important; }
+.frin-mb-0 { margin-bottom: 0 !important; }
+.frin-mb-4 { margin-bottom: var(--frin-space-4) !important; }
+.frin-mb-5 { margin-bottom: var(--frin-space-5) !important; }
+.frin-mb-6 { margin-bottom: var(--frin-space-6) !important; }
+.frin-mx-auto { margin-inline: auto !important; }
+
+/* Padding */
+.frin-p-3 { padding: var(--frin-space-3) !important; }
+.frin-p-4 { padding: var(--frin-space-4) !important; }
+.frin-p-5 { padding: var(--frin-space-5) !important; }
+
+/* Text */
+.frin-text-left   { text-align: left !important; }
+.frin-text-center { text-align: center !important; }
+.frin-text-right  { text-align: right !important; }
+.frin-text-muted  { color: var(--frin-color-text-muted) !important; }
+.frin-text-primary { color: var(--frin-color-primary) !important; }
+.frin-text-sm  { font-size: var(--frin-font-size-sm) !important; }
+.frin-text-lg  { font-size: var(--frin-font-size-lg) !important; }
+.frin-text-bold { font-weight: var(--frin-font-weight-bold) !important; }
+.frin-text-nowrap { white-space: nowrap !important; }
+.frin-text-truncate {
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%;
+}
+
+/* Background helpers */
+.frin-bg-subtle { background-color: var(--frin-color-bg-subtle) !important; }
+.frin-bg-surface { background-color: var(--frin-color-surface) !important; }
+.frin-bg-primary { background-color: var(--frin-color-primary) !important; color: var(--frin-color-on-primary) !important; }
+
+/* Border radius */
+.frin-rounded-sm   { border-radius: var(--frin-radius-sm) !important; }
+.frin-rounded-md   { border-radius: var(--frin-radius-md) !important; }
+.frin-rounded-lg   { border-radius: var(--frin-radius-lg) !important; }
+.frin-rounded-pill { border-radius: var(--frin-radius-pill) !important; }
+.frin-rounded-circle { border-radius: var(--frin-radius-circle) !important; }
+
+/* Shadow */
+.frin-shadow-sm { box-shadow: var(--frin-shadow-sm) !important; }
+.frin-shadow-md { box-shadow: var(--frin-shadow-md) !important; }
+.frin-shadow-lg { box-shadow: var(--frin-shadow-lg) !important; }
+
+/* Width */
+.frin-w-full { width: 100% !important; }
+.frin-w-auto { width: auto !important; }
+.frin-max-w-prose { max-width: 65ch; }
+
+/* Visibility / responsive show-hide */
+.frin-hidden-mobile { display: none !important; }
+@media (min-width: 769px) { .frin-hidden-mobile { display: revert !important; } }
+.frin-hidden-desktop { display: revert !important; }
+@media (min-width: 769px) { .frin-hidden-desktop { display: none !important; } }
+
+/* Stack helper (vertical rhythm) */
+.frin-stack > * + * { margin-top: var(--frin-space-3); }
+.frin-stack-4 > * + * { margin-top: var(--frin-space-4); }
+
+/* Divider */
+.frin-divider { height: 1px; background-color: var(--frin-color-border); border: 0; margin: var(--frin-space-4) 0; }
 
 

@@ -125,14 +125,78 @@
     });
   }
 
+  /* ---- Accordion ------------------------------------------------------- */
+  function initAccordions() {
+    document.querySelectorAll(".frin-accordion").forEach(function (acc) {
+      var items = acc.querySelectorAll(".frin-accordion__item");
+      items.forEach(function (item) {
+        var trigger = item.querySelector(".frin-accordion__trigger");
+        var panel = item.querySelector(".frin-accordion__panel");
+        if (!trigger) return;
+        var panelId = panel ? panel.id : null;
+        if (panel && !panelId) { panel.id = "acc-" + Math.random().toString(36).slice(2, 8); }
+        trigger.setAttribute("aria-expanded", item.classList.contains("is-open") ? "true" : "false");
+        if (panel) trigger.setAttribute("aria-controls", panel.id);
+        on(trigger, "click", function () {
+          var willOpen = !item.classList.contains("is-open");
+          // optional: close siblings when single-open behaviour is requested
+          if (willOpen && acc.hasAttribute("data-single")) {
+            items.forEach(function (it) {
+              if (it !== item) {
+                it.classList.remove("is-open");
+                var t = it.querySelector(".frin-accordion__trigger");
+                if (t) t.setAttribute("aria-expanded", "false");
+              }
+            });
+          }
+          item.classList.toggle("is-open", willOpen);
+          trigger.setAttribute("aria-expanded", String(willOpen));
+        });
+      });
+    });
+  }
+
+  /* ---- Toast ----------------------------------------------------------- */
+  function showToast(opts) {
+    opts = opts || {};
+    var container = document.querySelector(".frin-toast-container");
+    if (!container) {
+      container = document.createElement("div");
+      container.className = "frin-toast-container";
+      container.setAttribute("aria-live", "polite");
+      document.body.appendChild(container);
+    }
+    var toast = document.createElement("div");
+    toast.className = "frin-toast" + (opts.variant ? " frin-toast--" + opts.variant : "");
+    toast.setAttribute("role", "status");
+    toast.innerHTML =
+      '<div class="frin-toast__body">' +
+        (opts.title ? '<span class="frin-toast__title"></span>' : '') +
+        '<span class="frin-toast__msg"></span>' +
+      '</div>' +
+      '<button class="frin-toast__close" aria-label="Dismiss">×</button>';
+    if (opts.title) toast.querySelector(".frin-toast__title").textContent = opts.title;
+    toast.querySelector(".frin-toast__msg").textContent = opts.message || "";
+    toast.querySelector(".frin-toast__close").addEventListener("click", function () { dismiss(toast); });
+    container.appendChild(toast);
+    var ttl = opts.duration || 4000;
+    if (ttl > 0) setTimeout(function () { dismiss(toast); }, ttl);
+    return toast;
+  }
+  function dismiss(toast) {
+    toast.classList.add("is-leaving");
+    setTimeout(function () { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 200);
+  }
+
   function init() {
     initModals();
     initDropdowns();
     initTabs();
     initNavbar();
+    initAccordions();
   }
 
-  global.Frin = { init: init };
+  global.Frin = { init: init, showToast: showToast };
 
   if (document.readyState !== "loading") init();
   else document.addEventListener("DOMContentLoaded", init);

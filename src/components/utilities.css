@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Frin CSS — Utilities
+   A small, purposeful set of helpers (no unused utility soup).
+   All prefixed frin- to avoid collisions.
+   ========================================================================== */
+
+/* Display */
+.frin-d-none   { display: none !important; }
+.frin-d-inline { display: inline !important; }
+.frin-d-inline-block { display: inline-block !important; }
+.frin-d-flex   { display: flex !important; }
+.frin-d-grid   { display: grid !important; }
+.frin-d-block  { display: block !important; }
+
+/* Flex direction */
+.frin-flex-row    { flex-direction: row !important; }
+.frin-flex-col    { flex-direction: column !important; }
+.frin-flex-wrap   { flex-wrap: wrap !important; }
+.frin-flex-nowrap { flex-wrap: nowrap !important; }
+
+/* Alignment */
+.frin-items-start    { align-items: flex-start !important; }
+.frin-items-center  { align-items: center !important; }
+.frin-items-end     { align-items: flex-end !important; }
+.frin-items-stretch { align-items: stretch !important; }
+.frin-justify-start   { justify-content: flex-start !important; }
+.frin-justify-center  { justify-content: center !important; }
+.frin-justify-between { justify-content: space-between !important; }
+.frin-justify-end     { justify-content: flex-end !important; }
+.frin-flex-1 { flex: 1 1 0% !important; }
+.frin-flex-auto { flex: 1 1 auto !important; }
+.frin-flex-none { flex: none !important; }
+
+/* Gap */
+.frin-gap-1 { gap: var(--frin-space-1) !important; }
+.frin-gap-2 { gap: var(--frin-space-2) !important; }
+.frin-gap-3 { gap: var(--frin-space-3) !important; }
+.frin-gap-4 { gap: var(--frin-space-4) !important; }
+.frin-gap-5 { gap: var(--frin-space-5) !important; }
+.frin-gap-6 { gap: var(--frin-space-6) !important; }
+
+/* Margin (top) */
+.frin-mt-0 { margin-top: 0 !important; }
+.frin-mt-2 { margin-top: var(--frin-space-2) !important; }
+.frin-mt-3 { margin-top: var(--frin-space-3) !important; }
+.frin-mt-4 { margin-top: var(--frin-space-4) !important; }
+.frin-mt-5 { margin-top: var(--frin-space-5) !important; }
+.frin-mt-6 { margin-top: var(--frin-space-6) !important; }
+.frin-mb-0 { margin-bottom: 0 !important; }
+.frin-mb-4 { margin-bottom: var(--frin-space-4) !important; }
+.frin-mb-5 { margin-bottom: var(--frin-space-5) !important; }
+.frin-mb-6 { margin-bottom: var(--frin-space-6) !important; }
+.frin-mx-auto { margin-inline: auto !important; }
+
+/* Padding */
+.frin-p-3 { padding: var(--frin-space-3) !important; }
+.frin-p-4 { padding: var(--frin-space-4) !important; }
+.frin-p-5 { padding: var(--frin-space-5) !important; }
+
+/* Text */
+.frin-text-left   { text-align: left !important; }
+.frin-text-center { text-align: center !important; }
+.frin-text-right  { text-align: right !important; }
+.frin-text-muted  { color: var(--frin-color-text-muted) !important; }
+.frin-text-primary { color: var(--frin-color-primary) !important; }
+.frin-text-sm  { font-size: var(--frin-font-size-sm) !important; }
+.frin-text-lg  { font-size: var(--frin-font-size-lg) !important; }
+.frin-text-bold { font-weight: var(--frin-font-weight-bold) !important; }
+.frin-text-nowrap { white-space: nowrap !important; }
+.frin-text-truncate {
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%;
+}
+
+/* Background helpers */
+.frin-bg-subtle { background-color: var(--frin-color-bg-subtle) !important; }
+.frin-bg-surface { background-color: var(--frin-color-surface) !important; }
+.frin-bg-primary { background-color: var(--frin-color-primary) !important; color: var(--frin-color-on-primary) !important; }
+
+/* Border radius */
+.frin-rounded-sm   { border-radius: var(--frin-radius-sm) !important; }
+.frin-rounded-md   { border-radius: var(--frin-radius-md) !important; }
+.frin-rounded-lg   { border-radius: var(--frin-radius-lg) !important; }
+.frin-rounded-pill { border-radius: var(--frin-radius-pill) !important; }
+.frin-rounded-circle { border-radius: var(--frin-radius-circle) !important; }
+
+/* Shadow */
+.frin-shadow-sm { box-shadow: var(--frin-shadow-sm) !important; }
+.frin-shadow-md { box-shadow: var(--frin-shadow-md) !important; }
+.frin-shadow-lg { box-shadow: var(--frin-shadow-lg) !important; }
+
+/* Width */
+.frin-w-full { width: 100% !important; }
+.frin-w-auto { width: auto !important; }
+.frin-max-w-prose { max-width: 65ch; }
+
+/* Visibility / responsive show-hide */
+.frin-hidden-mobile { display: none !important; }
+@media (min-width: 769px) { .frin-hidden-mobile { display: revert !important; } }
+.frin-hidden-desktop { display: revert !important; }
+@media (min-width: 769px) { .frin-hidden-desktop { display: none !important; } }
+
+/* Stack helper (vertical rhythm) */
+.frin-stack > * + * { margin-top: var(--frin-space-3); }
+.frin-stack-4 > * + * { margin-top: var(--frin-space-4); }
+
+/* Divider */
+.frin-divider { height: 1px; background-color: var(--frin-color-border); border: 0; margin: var(--frin-space-4) 0; }
