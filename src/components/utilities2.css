@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Frin CSS — Utilities (extended)
+   ========================================================================== */
+
+/* Position */
+.frin-position-relative { position: relative !important; }
+.frin-position-absolute { position: absolute !important; }
+.frin-position-fixed    { position: fixed !important; }
+.frin-position-sticky   { position: sticky !important; }
+.frin-top-0 { top: 0 !important; }
+.frin-bottom-0 { bottom: 0 !important; }
+.frin-inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+
+/* Overflow */
+.frin-overflow-hidden { overflow: hidden !important; }
+.frin-overflow-auto   { overflow: auto !important; }
+.frin-overflow-x-auto { overflow-x: auto !important; }
+
+/* Aspect ratio */
+.frin-aspect-1x1 { aspect-ratio: 1 / 1; }
+.frin-aspect-4x3 { aspect-ratio: 4 / 3; }
+.frin-aspect-16x9 { aspect-ratio: 16 / 9; }
+.frin-aspect-21x9 { aspect-ratio: 21 / 9; }
+
+/* Border */
+.frin-border { border: 1px solid var(--frin-color-border) !important; }
+.frin-border-0 { border: 0 !important; }
+.frin-border-top { border-top: 1px solid var(--frin-color-border) !important; }
+.frin-border-bottom { border-bottom: 1px solid var(--frin-color-border) !important; }
+
+/* Cursor */
+.frin-cursor-pointer { cursor: pointer !important; }
+.frin-cursor-default { cursor: default !important; }
+.frin-cursor-not-allowed { cursor: not-allowed !important; }
+
+/* Opacity */
+.frin-opacity-50 { opacity: 0.5 !important; }
+.frin-opacity-75 { opacity: 0.75 !important; }
+
+/* Line height */
+.frin-leading-tight { line-height: var(--frin-line-height-tight) !important; }
+.frin-leading-normal { line-height: var(--frin-line-height-base) !important; }
+
+/* Z-index helpers */
+.frin-z-dropdown { z-index: var(--frin-z-dropdown) !important; }
+.frin-z-sticky   { z-index: var(--frin-z-sticky) !important; }
+
+/* Back-to-top button */
+.frin-back-to-top {
+  position: fixed;
+  right: var(--frin-space-5);
+  bottom: var(--frin-space-5);
+  width: 2.75rem; height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--frin-radius-circle);
+  background-color: var(--frin-color-primary);
+  color: var(--frin-color-on-primary);
+  box-shadow: var(--frin-shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity var(--frin-transition), transform var(--frin-transition), visibility var(--frin-transition);
+  z-index: var(--frin-z-sticky);
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+.frin-back-to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.frin-back-to-top:hover { background-color: var(--frin-color-primary-hover); text-decoration: none; color: var(--frin-color-on-primary); }

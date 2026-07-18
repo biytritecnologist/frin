@@ -1,4 +1,4 @@
-﻿/* Frin CSS v1.1.0 | MIT License | https://github.com/biytritecnologist/frin */
+﻿/* Frin CSS v1.2.0 | MIT License | https://github.com/biytritecnologist/frin */
 /* ==========================================================================
    Frin CSS â€” Design Tokens
    --------------------------------------------------------------------------
@@ -1411,5 +1411,228 @@ a.frin-list__item:hover { background-color: var(--frin-color-bg-subtle); text-de
 
 /* Divider */
 .frin-divider { height: 1px; background-color: var(--frin-color-border); border: 0; margin: var(--frin-space-4) 0; }
+
+/* ==========================================================================
+   Frin CSS â€” Switch (toggle)
+   .frin-switch  (label wrapper) > input[type=checkbox] + .frin-switch__track
+   ========================================================================== */
+
+.frin-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--frin-space-2);
+  cursor: pointer;
+  font-size: var(--frin-font-size-sm);
+}
+.frin-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.frin-switch__track {
+  position: relative;
+  width: 2.5rem;
+  height: 1.4rem;
+  border-radius: var(--frin-radius-pill);
+  background-color: var(--frin-color-border-strong);
+  transition: background-color var(--frin-transition);
+  flex: 0 0 auto;
+}
+.frin-switch__track::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: calc(1.4rem - 4px);
+  height: calc(1.4rem - 4px);
+  border-radius: var(--frin-radius-circle);
+  background-color: #fff;
+  box-shadow: var(--frin-shadow-sm);
+  transition: transform var(--frin-transition);
+}
+.frin-switch input:checked + .frin-switch__track { background-color: var(--frin-color-primary); }
+.frin-switch input:checked + .frin-switch__track::after { transform: translateX(1.1rem); }
+.frin-switch input:focus-visible + .frin-switch__track { outline: 3px solid var(--frin-color-focus-ring); outline-offset: 2px; }
+.frin-switch input:disabled + .frin-switch__track { opacity: 0.5; cursor: not-allowed; }
+
+/* ==========================================================================
+   Frin CSS â€” Rating (stars)
+   .frin-rating  (use â˜… characters or aria-labels)
+   ========================================================================== */
+
+.frin-rating { display: inline-flex; gap: 2px; color: var(--frin-color-warning); line-height: 1; font-size: var(--frin-font-size-lg); }
+.frin-rating--sm { font-size: var(--frin-font-size-base); }
+.frin-rating--lg { font-size: var(--frin-font-size-2xl); }
+.frin-rating [aria-hidden="true"] { color: var(--frin-color-border-strong); }
+
+/* ==========================================================================
+   Frin CSS â€” Steps (numbered stepper)
+   .frin-steps > .frin-steps__item  (states: is-active | is-complete)
+   ========================================================================== */
+
+.frin-steps {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: var(--frin-space-2);
+  counter-reset: frin-step;
+  flex-wrap: wrap;
+}
+.frin-steps__item {
+  display: flex;
+  align-items: center;
+  gap: var(--frin-space-2);
+  flex: 1 1 0;
+  min-width: 8rem;
+  color: var(--frin-color-text-muted);
+  font-size: var(--frin-font-size-sm);
+}
+.frin-steps__item::before {
+  counter-increment: frin-step;
+  content: counter(frin-step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem; height: 1.75rem;
+  border-radius: var(--frin-radius-circle);
+  background-color: var(--frin-color-bg-subtle);
+  border: 1px solid var(--frin-color-border-strong);
+  font-weight: var(--frin-font-weight-bold);
+  flex: 0 0 auto;
+}
+.frin-steps__item.is-active { color: var(--frin-color-text); font-weight: var(--frin-font-weight-medium); }
+.frin-steps__item.is-active::before { background-color: var(--frin-color-primary); color: var(--frin-color-on-primary); border-color: var(--frin-color-primary); }
+.frin-steps__item.is-complete { color: var(--frin-color-text); }
+.frin-steps__item.is-complete::before { content: "âœ“"; background-color: var(--frin-color-success); color: #fff; border-color: var(--frin-color-success); }
+
+/* ==========================================================================
+   Frin CSS â€” Timeline
+   .frin-timeline > .frin-timeline__item
+   ========================================================================== */
+
+.frin-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid var(--frin-color-border);
+}
+.frin-timeline__item {
+  position: relative;
+  padding: 0 0 var(--frin-space-5) var(--frin-space-5);
+}
+.frin-timeline__item::before {
+  content: "";
+  position: absolute;
+  left: -7px; top: 2px;
+  width: 12px; height: 12px;
+  border-radius: var(--frin-radius-circle);
+  background-color: var(--frin-color-primary);
+  border: 2px solid var(--frin-color-surface);
+}
+.frin-timeline__title { font-weight: var(--frin-font-weight-bold); }
+.frin-timeline__time { font-size: var(--frin-font-size-xs); color: var(--frin-color-text-muted); }
+
+/* ==========================================================================
+   Frin CSS â€” Skeleton (loading placeholder)
+   .frin-skeleton  (modifiers: --text | --circle | --rounded)
+   ========================================================================== */
+
+.frin-skeleton {
+  display: block;
+  width: 100%;
+  height: 1rem;
+  border-radius: var(--frin-radius-md);
+  background: linear-gradient(90deg, var(--frin-color-bg-subtle) 25%, var(--frin-color-border) 37%, var(--frin-color-bg-subtle) 63%);
+  background-size: 400% 100%;
+  animation: frin-shimmer 1.4s ease infinite;
+}
+.frin-skeleton--text { height: 0.75rem; margin-bottom: 0.5rem; }
+.frin-skeleton--circle { width: 3rem; height: 3rem; border-radius: var(--frin-radius-circle); }
+.frin-skeleton--rounded { border-radius: var(--frin-radius-lg); }
+@keyframes frin-shimmer { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+
+/* ==========================================================================
+   Frin CSS â€” Empty state
+   .frin-empty  (centered, with icon + text + action)
+   ========================================================================== */
+
+.frin-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--frin-space-3);
+  padding: var(--frin-space-7) var(--frin-space-4);
+  color: var(--frin-color-text-muted);
+}
+.frin-empty__icon { font-size: 2.5rem; line-height: 1; }
+.frin-empty__title { color: var(--frin-color-text); font-weight: var(--frin-font-weight-bold); }
+
+/* ==========================================================================
+   Frin CSS â€” Utilities (extended)
+   ========================================================================== */
+
+/* Position */
+.frin-position-relative { position: relative !important; }
+.frin-position-absolute { position: absolute !important; }
+.frin-position-fixed    { position: fixed !important; }
+.frin-position-sticky   { position: sticky !important; }
+.frin-top-0 { top: 0 !important; }
+.frin-bottom-0 { bottom: 0 !important; }
+.frin-inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+
+/* Overflow */
+.frin-overflow-hidden { overflow: hidden !important; }
+.frin-overflow-auto   { overflow: auto !important; }
+.frin-overflow-x-auto { overflow-x: auto !important; }
+
+/* Aspect ratio */
+.frin-aspect-1x1 { aspect-ratio: 1 / 1; }
+.frin-aspect-4x3 { aspect-ratio: 4 / 3; }
+.frin-aspect-16x9 { aspect-ratio: 16 / 9; }
+.frin-aspect-21x9 { aspect-ratio: 21 / 9; }
+
+/* Border */
+.frin-border { border: 1px solid var(--frin-color-border) !important; }
+.frin-border-0 { border: 0 !important; }
+.frin-border-top { border-top: 1px solid var(--frin-color-border) !important; }
+.frin-border-bottom { border-bottom: 1px solid var(--frin-color-border) !important; }
+
+/* Cursor */
+.frin-cursor-pointer { cursor: pointer !important; }
+.frin-cursor-default { cursor: default !important; }
+.frin-cursor-not-allowed { cursor: not-allowed !important; }
+
+/* Opacity */
+.frin-opacity-50 { opacity: 0.5 !important; }
+.frin-opacity-75 { opacity: 0.75 !important; }
+
+/* Line height */
+.frin-leading-tight { line-height: var(--frin-line-height-tight) !important; }
+.frin-leading-normal { line-height: var(--frin-line-height-base) !important; }
+
+/* Z-index helpers */
+.frin-z-dropdown { z-index: var(--frin-z-dropdown) !important; }
+.frin-z-sticky   { z-index: var(--frin-z-sticky) !important; }
+
+/* Back-to-top button */
+.frin-back-to-top {
+  position: fixed;
+  right: var(--frin-space-5);
+  bottom: var(--frin-space-5);
+  width: 2.75rem; height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--frin-radius-circle);
+  background-color: var(--frin-color-primary);
+  color: var(--frin-color-on-primary);
+  box-shadow: var(--frin-shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity var(--frin-transition), transform var(--frin-transition), visibility var(--frin-transition);
+  z-index: var(--frin-z-sticky);
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+.frin-back-to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.frin-back-to-top:hover { background-color: var(--frin-color-primary-hover); text-decoration: none; color: var(--frin-color-on-primary); }
 
 

@@ -196,6 +196,65 @@
     initAccordions();
   }
 
+  /* ---- Copy-to-clipboard for code snippets ----------------------------- */
+  function initCodeCopy() {
+    document.querySelectorAll("pre[class*='docs-code']").forEach(function (pre) {
+      if (pre.querySelector(".frin-copy-btn")) return;
+      var btn = document.createElement("button");
+      btn.className = "frin-copy-btn frin-btn frin-btn--ghost frin-btn--sm";
+      btn.type = "button";
+      btn.setAttribute("aria-label", "Copy code");
+      btn.textContent = "Copy";
+      btn.style.position = "absolute";
+      btn.style.top = "var(--frin-space-2)";
+      btn.style.right = "var(--frin-space-2)";
+      pre.style.position = "relative";
+      btn.addEventListener("click", function () {
+        var code = pre.querySelector("code");
+        var text = code ? code.innerText : pre.innerText;
+        var done = function () {
+          btn.textContent = "Copied!";
+          setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function () {});
+        } else {
+          var ta = document.createElement("textarea");
+          ta.value = text; document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); done(); } catch (e) {}
+          document.body.removeChild(ta);
+        }
+      });
+      pre.appendChild(btn);
+    });
+  }
+
+  /* ---- Back to top ---------------------------------------------------- */
+  function initBackToTop() {
+    var btn = document.querySelector(".frin-back-to-top");
+    if (!btn) return;
+    var onScroll = function () {
+      if (window.scrollY > 400) btn.classList.add("is-visible");
+      else btn.classList.remove("is-visible");
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  function init() {
+    initModals();
+    initDropdowns();
+    initTabs();
+    initNavbar();
+    initAccordions();
+    initCodeCopy();
+    initBackToTop();
+  }
+
   global.Frin = { init: init, showToast: showToast };
 
   if (document.readyState !== "loading") init();

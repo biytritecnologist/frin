@@ -36,7 +36,7 @@
     "url": "https://github.com/biytritecnologist/frin",
     "description": "A tiny, pure-CSS, mobile-first component framework with CSS variable theming and light/dark support.",
     "license": "https://opensource.org/licenses/MIT",
-    "softwareVersion": "1.1.0",
+    "softwareVersion": "1.2.0",
     "programmingLanguage": "CSS",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -49,7 +49,8 @@
     .docs-eyebrow { color: var(--frin-color-primary); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: var(--frin-font-size-sm); }
     .docs-example { margin-top: var(--frin-space-4); padding: var(--frin-space-5); background: var(--frin-color-bg-subtle); border: 1px solid var(--frin-color-border); border-radius: var(--frin-radius-lg); }
     .docs-example > * + * { margin-top: var(--frin-space-3); }
-    pre[class*="docs-code"] { background: var(--frin-color-secondary); color: #eaf2ff; padding: var(--frin-space-4); border-radius: var(--frin-radius-md); overflow-x: auto; font-size: var(--frin-font-size-sm); margin-top: var(--frin-space-3); }
+    pre[class*="docs-code"] { background: var(--frin-color-secondary); color: #eaf2ff; padding: var(--frin-space-4); border-radius: var(--frin-radius-md); overflow-x: auto; font-size: var(--frin-font-size-sm); margin-top: var(--frin-space-3); position: relative; }
+    .frin-copy-btn { font-size: var(--frin-font-size-xs); padding: var(--frin-space-1) var(--frin-space-2); }
     .docs-sidebar { position: sticky; top: 5rem; align-self: start; max-height: calc(100vh - 6rem); overflow-y: auto; }
     .docs-sidebar a { display:block; padding: var(--frin-space-2) var(--frin-space-3); border-radius: var(--frin-radius-md); color: var(--frin-color-text-muted); border-left: 2px solid transparent; }
     .docs-sidebar a:hover { background: var(--frin-color-bg-subtle); color: var(--frin-color-text); text-decoration:none; }
@@ -156,6 +157,9 @@
           <a href="#dropdown">Dropdown</a>
           <a href="#tabs">Tabs</a>
           <a href="#tooltip">Tooltip</a>
+          <a href="#switch">Switch &amp; Rating</a>
+          <a href="#steps">Steps &amp; Timeline</a>
+          <a href="#skeleton">Skeleton &amp; Empty</a>
           <a href="#toast">Toast</a>
           <a href="#pagination">Pagination</a>
           <a href="#table">Table</a>
@@ -467,6 +471,69 @@
 &lt;/span&gt;</code></pre>
         </section>
 
+        <!-- ============ SWITCH & RATING ============ -->
+        <section class="docs-section" id="switch">
+          <h2>Switch &amp; Rating</h2>
+          <div class="docs-example">
+            <label class="frin-switch"><input type="checkbox" checked /> <span class="frin-switch__track" aria-hidden="true"></span> Notifications</label>
+            <label class="frin-switch"><input type="checkbox" /> <span class="frin-switch__track" aria-hidden="true"></span> Dark mode</label>
+            <label class="frin-switch"><input type="checkbox" disabled /> <span class="frin-switch__track" aria-hidden="true"></span> Disabled</label>
+            <div class="frin-rating" role="img" aria-label="4 out of 5 stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span aria-hidden="true">★</span>
+            </div>
+            <div class="frin-rating frin-rating--lg"><span>★</span><span>★</span><span>★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></div>
+          </div>
+          <pre class="docs-code"><code>&lt;label class="frin-switch"&gt;&lt;input type="checkbox" checked /&gt;
+  &lt;span class="frin-switch__track" aria-hidden="true"&gt;&lt;/span&gt; Notifications
+&lt;/label&gt;
+&lt;div class="frin-rating"&gt;★★★★&lt;span aria-hidden="true"&gt;★&lt;/span&gt;&lt;/div&gt;</code></pre>
+        </section>
+
+        <!-- ============ STEPS & TIMELINE ============ -->
+        <section class="docs-section" id="steps">
+          <h2>Steps &amp; Timeline</h2>
+          <div class="docs-example">
+            <ol class="frin-steps">
+              <li class="frin-steps__item is-complete">Cart</li>
+              <li class="frin-steps__item is-active">Shipping</li>
+              <li class="frin-steps__item">Payment</li>
+              <li class="frin-steps__item">Done</li>
+            </ol>
+            <ul class="frin-timeline frin-mt-5">
+              <li class="frin-timeline__item"><div class="frin-timeline__title">Order placed</div><div class="frin-timeline__time">10:42 AM</div></li>
+              <li class="frin-timeline__item"><div class="frin-timeline__title">Shipped</div><div class="frin-timeline__time">2:15 PM</div></li>
+              <li class="frin-timeline__item"><div class="frin-timeline__title">Out for delivery</div><div class="frin-timeline__time">9:03 AM</div></li>
+            </ul>
+          </div>
+          <pre class="docs-code"><code>&lt;ol class="frin-steps"&gt;
+  &lt;li class="frin-steps__item is-complete"&gt;Cart&lt;/li&gt;
+  &lt;li class="frin-steps__item is-active"&gt;Shipping&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        </section>
+
+        <!-- ============ SKELETON & EMPTY ============ -->
+        <section class="docs-section" id="skeleton">
+          <h2>Skeleton &amp; Empty state</h2>
+          <div class="docs-example">
+            <div class="frin-card frin-card__body frin-d-flex frin-gap-3">
+              <span class="frin-skeleton frin-skeleton--circle" aria-hidden="true"></span>
+              <div class="frin-flex-1">
+                <span class="frin-skeleton frin-skeleton--text" style="width:40%"></span>
+                <span class="frin-skeleton frin-skeleton--text" style="width:80%"></span>
+                <span class="frin-skeleton frin-skeleton--text" style="width:60%"></span>
+              </div>
+            </div>
+            <div class="frin-empty frin-mt-3">
+              <div class="frin-empty__icon">📭</div>
+              <div class="frin-empty__title">No messages yet</div>
+              <p>When you receive messages they'll show up here.</p>
+              <button class="frin-btn frin-btn--primary frin-btn--sm">Compose</button>
+            </div>
+          </div>
+          <pre class="docs-code"><code>&lt;span class="frin-skeleton frin-skeleton--text"&gt;&lt;/span&gt;
+&lt;div class="frin-empty"&gt;&lt;div class="frin-empty__icon"&gt;📭&lt;/div&gt;…&lt;/div&gt;</code></pre>
+        </section>
+
         <!-- ============ TOAST ============ -->
         <section class="docs-section" id="toast">
           <h2>Toast</h2>
@@ -553,6 +620,8 @@
       <a class="frin-btn frin-btn--ghost frin-btn--sm" href="https://github.com/biytritecnologist/frin">View on GitHub</a>
     </div>
   </footer>
+
+  <a class="frin-back-to-top" href="#top" aria-label="Back to top">↑</a>
 
   <script src="dist/frin.js"></script>
   <script>

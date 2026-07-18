@@ -11,7 +11,7 @@ your own styles.
 - 🌗 **Light / dark** — built-in dark theme via `data-theme="dark"`
 - ♿ **Accessible** — visible focus rings, ARIA-friendly markup, reduced-motion support
 - 📱 **Mobile-first** — responsive grid & components by default
-- 🪶 **Small** — ~34 KB minified, zero dependencies, zero JavaScript required*
+- 🪶 **Small** — ~40 KB minified, zero dependencies, zero JavaScript required*
 
 \*JavaScript is only needed for progressive enhancement (modals, dropdowns, tabs,
 navbar toggle). Components render fine without it.
@@ -108,6 +108,12 @@ All classes use the `frin-` prefix. Variant modifiers use BEM-style double dashe
 | Avatar      | `frin-avatar`                   | `--sm`, `--lg`, `--rounded`; `<img>` or text initials                 |
 | List group  | `frin-list`                     | `__item`, `__item--active/--disabled/--muted`                          |
 | Toast       | `frin-toast`                    | `--success/--warning/--danger/--info`; `__title` `__body` `__close` (via `Frin.showToast()`) |
+| Switch      | `frin-switch`                   | `__track`; works with `<input type="checkbox">` (`:checked`)            |
+| Rating      | `frin-rating`                   | `--sm`, `--lg`; filled star + `[aria-hidden]` empty star                |
+| Steps       | `frin-steps`                    | `__item`, `is-active`, `is-complete` (auto-numbered)                    |
+| Timeline    | `frin-timeline`                 | `__item`, `__title`, `__time`                                           |
+| Skeleton    | `frin-skeleton`                 | `--text`, `--circle`, `--rounded` (shimmer animation)                   |
+| Empty state | `frin-empty`                    | `__icon`, `__title`                                                      |
 
 ### Utility helpers
 

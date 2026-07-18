@@ -1,0 +1,151 @@
+/* ==========================================================================
+   Frin CSS — Switch (toggle)
+   .frin-switch  (label wrapper) > input[type=checkbox] + .frin-switch__track
+   ========================================================================== */
+
+.frin-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--frin-space-2);
+  cursor: pointer;
+  font-size: var(--frin-font-size-sm);
+}
+.frin-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.frin-switch__track {
+  position: relative;
+  width: 2.5rem;
+  height: 1.4rem;
+  border-radius: var(--frin-radius-pill);
+  background-color: var(--frin-color-border-strong);
+  transition: background-color var(--frin-transition);
+  flex: 0 0 auto;
+}
+.frin-switch__track::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: calc(1.4rem - 4px);
+  height: calc(1.4rem - 4px);
+  border-radius: var(--frin-radius-circle);
+  background-color: #fff;
+  box-shadow: var(--frin-shadow-sm);
+  transition: transform var(--frin-transition);
+}
+.frin-switch input:checked + .frin-switch__track { background-color: var(--frin-color-primary); }
+.frin-switch input:checked + .frin-switch__track::after { transform: translateX(1.1rem); }
+.frin-switch input:focus-visible + .frin-switch__track { outline: 3px solid var(--frin-color-focus-ring); outline-offset: 2px; }
+.frin-switch input:disabled + .frin-switch__track { opacity: 0.5; cursor: not-allowed; }
+
+/* ==========================================================================
+   Frin CSS — Rating (stars)
+   .frin-rating  (use ★ characters or aria-labels)
+   ========================================================================== */
+
+.frin-rating { display: inline-flex; gap: 2px; color: var(--frin-color-warning); line-height: 1; font-size: var(--frin-font-size-lg); }
+.frin-rating--sm { font-size: var(--frin-font-size-base); }
+.frin-rating--lg { font-size: var(--frin-font-size-2xl); }
+.frin-rating [aria-hidden="true"] { color: var(--frin-color-border-strong); }
+
+/* ==========================================================================
+   Frin CSS — Steps (numbered stepper)
+   .frin-steps > .frin-steps__item  (states: is-active | is-complete)
+   ========================================================================== */
+
+.frin-steps {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: var(--frin-space-2);
+  counter-reset: frin-step;
+  flex-wrap: wrap;
+}
+.frin-steps__item {
+  display: flex;
+  align-items: center;
+  gap: var(--frin-space-2);
+  flex: 1 1 0;
+  min-width: 8rem;
+  color: var(--frin-color-text-muted);
+  font-size: var(--frin-font-size-sm);
+}
+.frin-steps__item::before {
+  counter-increment: frin-step;
+  content: counter(frin-step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem; height: 1.75rem;
+  border-radius: var(--frin-radius-circle);
+  background-color: var(--frin-color-bg-subtle);
+  border: 1px solid var(--frin-color-border-strong);
+  font-weight: var(--frin-font-weight-bold);
+  flex: 0 0 auto;
+}
+.frin-steps__item.is-active { color: var(--frin-color-text); font-weight: var(--frin-font-weight-medium); }
+.frin-steps__item.is-active::before { background-color: var(--frin-color-primary); color: var(--frin-color-on-primary); border-color: var(--frin-color-primary); }
+.frin-steps__item.is-complete { color: var(--frin-color-text); }
+.frin-steps__item.is-complete::before { content: "✓"; background-color: var(--frin-color-success); color: #fff; border-color: var(--frin-color-success); }
+
+/* ==========================================================================
+   Frin CSS — Timeline
+   .frin-timeline > .frin-timeline__item
+   ========================================================================== */
+
+.frin-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid var(--frin-color-border);
+}
+.frin-timeline__item {
+  position: relative;
+  padding: 0 0 var(--frin-space-5) var(--frin-space-5);
+}
+.frin-timeline__item::before {
+  content: "";
+  position: absolute;
+  left: -7px; top: 2px;
+  width: 12px; height: 12px;
+  border-radius: var(--frin-radius-circle);
+  background-color: var(--frin-color-primary);
+  border: 2px solid var(--frin-color-surface);
+}
+.frin-timeline__title { font-weight: var(--frin-font-weight-bold); }
+.frin-timeline__time { font-size: var(--frin-font-size-xs); color: var(--frin-color-text-muted); }
+
+/* ==========================================================================
+   Frin CSS — Skeleton (loading placeholder)
+   .frin-skeleton  (modifiers: --text | --circle | --rounded)
+   ========================================================================== */
+
+.frin-skeleton {
+  display: block;
+  width: 100%;
+  height: 1rem;
+  border-radius: var(--frin-radius-md);
+  background: linear-gradient(90deg, var(--frin-color-bg-subtle) 25%, var(--frin-color-border) 37%, var(--frin-color-bg-subtle) 63%);
+  background-size: 400% 100%;
+  animation: frin-shimmer 1.4s ease infinite;
+}
+.frin-skeleton--text { height: 0.75rem; margin-bottom: 0.5rem; }
+.frin-skeleton--circle { width: 3rem; height: 3rem; border-radius: var(--frin-radius-circle); }
+.frin-skeleton--rounded { border-radius: var(--frin-radius-lg); }
+@keyframes frin-shimmer { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+
+/* ==========================================================================
+   Frin CSS — Empty state
+   .frin-empty  (centered, with icon + text + action)
+   ========================================================================== */
+
+.frin-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--frin-space-3);
+  padding: var(--frin-space-7) var(--frin-space-4);
+  color: var(--frin-color-text-muted);
+}
+.frin-empty__icon { font-size: 2.5rem; line-height: 1; }
+.frin-empty__title { color: var(--frin-color-text); font-weight: var(--frin-font-weight-bold); }
